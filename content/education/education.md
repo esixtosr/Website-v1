@@ -1,7 +1,7 @@
 ---
 school: 'Purdue University Polytechnic Institute'
 degree: 'B.S. in Cybersecurity & Network Engineering'
-range: 'Expected May 2026'
+range: 'Expected December 2026'
 location: 'West Lafayette, Indiana'
 ---
 

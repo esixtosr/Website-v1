@@ -164,7 +164,7 @@ const Education = () => {
   }, [prefersReducedMotion]);
 
   const highlights = [
-    'Expected May 2026',
+    'Expected December 2026',
     'West Lafayette, Indiana',
     'Cybersecurity',
     'Network Engineering',
@@ -193,7 +193,7 @@ const Education = () => {
         <StyledText>
           <p className="school">Purdue University Polytechnic Institute</p>
           <h3 className="degree">B.S. in Cybersecurity &amp; Network Engineering</h3>
-          <p className="meta">Expected Graduation: May 2026</p>
+          <p className="meta">Expected Graduation: December 2026</p>
 
           <p>
             I am pursuing a degree focused on cybersecurity, network engineering, systems

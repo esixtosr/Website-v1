@@ -54,12 +54,12 @@ const StyledHamburgerButton = styled.button`
     transition-timing-function: cubic-bezier(
       ${props => (props.menuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`)}
     );
+
     &:before,
     &:after {
       content: '';
       display: block;
       position: absolute;
-      left: auto;
       right: 0;
       width: var(--hamburger-width);
       height: 2px;
@@ -69,6 +69,7 @@ const StyledHamburgerButton = styled.button`
       transition-duration: 0.15s;
       transition-property: transform;
     }
+
     &:before {
       width: ${props => (props.menuOpen ? `100%` : `120%`)};
       top: ${props => (props.menuOpen ? `0` : `-10px`)};
@@ -76,6 +77,7 @@ const StyledHamburgerButton = styled.button`
       transition: ${({ menuOpen }) =>
     menuOpen ? 'var(--ham-before-active)' : 'var(--ham-before)'};
     }
+
     &:after {
       width: ${props => (props.menuOpen ? `100%` : `80%`)};
       bottom: ${props => (props.menuOpen ? `0` : `-10px`)};
@@ -110,7 +112,7 @@ const StyledSidebar = styled.aside`
     ${({ theme }) => theme.mixins.flexBetween};
     width: 100%;
     flex-direction: column;
-    color: var(--lightest-slate);
+    color: var(--text-heading);
     font-family: var(--font-mono);
     text-align: center;
   }
@@ -138,31 +140,98 @@ const StyledSidebar = styled.aside`
     }
   }
 
-  .resume-link {
-    ${({ theme }) => theme.mixins.bigButton};
-    padding: 18px 50px;
-    margin: 10% auto 0;
-    width: max-content;
-    font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
+  .theme-section {
+    margin-top: 28px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .theme-label {
+    margin: 0 0 14px;
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .theme-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .theme-option {
+    ${({ theme }) => theme.mixins.smallButton};
+    min-width: 88px;
+    font-size: var(--fz-xs);
+  }
+
+  .theme-option.active {
+    background-color: var(--green-tint);
+    color: var(--green);
+    box-shadow: inset 0 0 0 1px var(--green);
   }
 `;
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [themeMode, setThemeMode] = useState('system');
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen(prev => !prev);
 
   const buttonRef = useRef(null);
   const navRef = useRef(null);
+  const wrapperRef = useRef();
 
   let menuFocusables;
   let firstFocusableEl;
   let lastFocusableEl;
 
   const setFocusables = () => {
-    menuFocusables = [buttonRef.current, ...Array.from(navRef.current.querySelectorAll('a'))];
+    if (!navRef.current || !buttonRef.current) {
+      return;
+    }
+
+    menuFocusables = [
+      buttonRef.current,
+      ...Array.from(navRef.current.querySelectorAll('a, button')),
+    ];
     firstFocusableEl = menuFocusables[0];
     lastFocusableEl = menuFocusables[menuFocusables.length - 1];
+  };
+
+  const applyTheme = mode => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+    let resolvedTheme = 'dark';
+
+    if (mode === 'light') {
+      resolvedTheme = 'light';
+    } else if (mode === 'dark') {
+      resolvedTheme = 'dark';
+    } else {
+      resolvedTheme = mediaQuery.matches ? 'light' : 'dark';
+    }
+
+    document.documentElement.setAttribute('data-theme', resolvedTheme);
+  };
+
+  const handleThemeChange = mode => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    setThemeMode(mode);
+    localStorage.setItem('theme-mode', mode);
+    applyTheme(mode);
+    setMenuOpen(false);
   };
 
   const handleBackwardTab = e => {
@@ -182,12 +251,11 @@ const Menu = () => {
   const onKeyDown = e => {
     switch (e.key) {
       case KEY_CODES.ESCAPE:
-      case KEY_CODES.ESCAPE_IE11: {
+      case KEY_CODES.ESCAPE_IE11:
         setMenuOpen(false);
         break;
-      }
 
-      case KEY_CODES.TAB: {
+      case KEY_CODES.TAB:
         if (menuFocusables && menuFocusables.length === 1) {
           e.preventDefault();
           break;
@@ -198,11 +266,9 @@ const Menu = () => {
           handleForwardTab(e);
         }
         break;
-      }
 
-      default: {
+      default:
         break;
-      }
     }
   };
 
@@ -213,6 +279,11 @@ const Menu = () => {
   };
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme-mode') || 'system';
+      setThemeMode(savedTheme);
+    }
+
     document.addEventListener('keydown', onKeyDown);
     window.addEventListener('resize', onResize);
     setFocusables();
@@ -223,7 +294,10 @@ const Menu = () => {
     };
   }, []);
 
-  const wrapperRef = useRef();
+  useEffect(() => {
+    setFocusables();
+  }, [menuOpen, themeMode]);
+
   useOnClickOutside(wrapperRef, () => setMenuOpen(false));
 
   return (
@@ -257,9 +331,32 @@ const Menu = () => {
               </ol>
             )}
 
-            <a href="/resume.pdf" className="resume-link">
-              Resume
-            </a>
+            <div className="theme-section">
+              <p className="theme-label">Theme</p>
+
+              <div className="theme-options">
+                <button
+                  type="button"
+                  className={`theme-option ${themeMode === 'dark' ? 'active' : ''}`}
+                  onClick={() => handleThemeChange('dark')}>
+                  Dark
+                </button>
+
+                <button
+                  type="button"
+                  className={`theme-option ${themeMode === 'light' ? 'active' : ''}`}
+                  onClick={() => handleThemeChange('light')}>
+                  Light
+                </button>
+
+                <button
+                  type="button"
+                  className={`theme-option ${themeMode === 'system' ? 'active' : ''}`}
+                  onClick={() => handleThemeChange('system')}>
+                  System
+                </button>
+              </div>
+            </div>
           </nav>
         </StyledSidebar>
       </div>

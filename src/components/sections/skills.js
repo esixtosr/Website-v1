@@ -44,10 +44,6 @@ const StyledSkillCard = styled.li`
         color: var(--green);
       }
 
-      .card-description li {
-        transform: translateX(4px);
-      }
-
       .card-top .card-icon {
         transform: scale(1.08);
       }
@@ -117,7 +113,6 @@ const StyledSkillCard = styled.li`
     position: relative;
     margin-bottom: 14px;
     padding-left: 18px;
-    transition: var(--transition);
 
     &:last-child {
       margin-bottom: 0;

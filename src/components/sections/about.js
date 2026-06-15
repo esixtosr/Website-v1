@@ -18,6 +18,7 @@ const StyledAboutSection = styled.section`
     }
   }
 `;
+
 const StyledText = styled.div`
   ul.skills-list {
     display: grid;
@@ -46,6 +47,7 @@ const StyledText = styled.div`
     }
   }
 `;
+
 const StyledPic = styled.div`
   position: relative;
   max-width: 300px;
@@ -123,9 +125,16 @@ const About = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  }, [prefersReducedMotion]);
 
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  const skills = [
+    'Network Security',
+    'VLANs & VPNs',
+    'System Administration',
+    'Linux & Windows',
+    'Virtualization',
+    'Risk & Compliance',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,37 +144,46 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS!
+              Hello! I’m Edwin. I’m a Cybersecurity and Network Engineering student at Purdue
+              University with a strong interest in secure infrastructure, systems administration,
+              network defense, and practical hands-on problem solving.
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
+              Over the past few years, I’ve had the opportunity to contribute in different
+              environments, including{' '}
+              <a href="https://sinapsis.tech/" target="_blank" rel="noreferrer">
+                a startup
+              </a>
+              ,{' '}
+              <a href="https://www.purdue.edu/" target="_blank" rel="noreferrer">
+                a university
+              </a>
+              , and in{' '}
+              <a
+                href="https://polytechnic.purdue.edu/degrees/computer-and-information-technology"
+                target="_blank"
+                rel="noreferrer">
+                teaching and academic support
+              </a>
+              . My experience has included supporting security and ISO 27001-aligned documentation
+              at Sinapsis.tech, working in technical support and networking-focused environments at
+              Purdue, and serving as a teaching assistant for Purdue CIT courses.
             </p>
 
             <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
+              My main focus today is building a strong foundation across cybersecurity, networking,
+              infrastructure, and governance — combining technical work with clear documentation,
+              structured thinking, and real-world operational support.
             </p>
 
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p>Here are a few areas I’ve been working in recently:</p>
           </div>
 
           <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
+            {skills.map((skill, i) => (
+              <li key={i}>{skill}</li>
+            ))}
           </ul>
         </StyledText>
 
@@ -177,7 +195,7 @@ const About = () => {
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Headshot"
+              alt="Portrait of Edwin Sixtos Ruiz"
             />
           </div>
         </StyledPic>

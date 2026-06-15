@@ -14,7 +14,7 @@ const StyledLoader = styled.div`
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: #020617;
+  background-color: var(--background);
   z-index: 99;
 
   .logo-wrapper {
@@ -22,6 +22,7 @@ const StyledLoader = styled.div`
     max-width: 100px;
     transition: var(--transition);
     opacity: ${props => (props.isMounted ? 1 : 0)};
+
     svg {
       display: block;
       width: 100%;
@@ -29,6 +30,7 @@ const StyledLoader = styled.div`
       margin: 0 auto;
       fill: none;
       user-select: none;
+
       #B {
         opacity: 0;
       }

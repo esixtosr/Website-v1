@@ -74,8 +74,8 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: #020617;
-    color: var(--light-slate);
+    background-color: var(--background);
+    color: var(--text-main);
     font-family: var(--font-sans);
     font-size: var(--fz-xl);
     line-height: 1.3;
@@ -165,7 +165,7 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     margin: 0 0 10px 0;
     font-weight: 600;
-    color: var(--lightest-slate);
+    color: var(--text-heading);
     line-height: 1.1;
   }
 
