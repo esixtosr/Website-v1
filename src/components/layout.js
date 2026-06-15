@@ -11,12 +11,17 @@ const StyledContent = styled.div`
 `;
 
 const Layout = ({ children, location }) => {
-  const isHome = location.pathname === '/';
+  const isHome =
+    location.pathname === '/' ||
+    location.pathname === '/Website-v1/' ||
+    location.pathname === '/Website-v1';
+
   const [isLoading, setIsLoading] = useState(isHome);
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
     const allLinks = Array.from(document.querySelectorAll('a'));
+
     if (allLinks.length > 0) {
       allLinks.forEach(link => {
         if (link.host !== window.location.host) {
@@ -34,8 +39,10 @@ const Layout = ({ children, location }) => {
 
     if (location.hash) {
       const id = location.hash.substring(1); // location.hash without the '#'
+
       setTimeout(() => {
         const el = document.getElementById(id);
+
         if (el) {
           el.scrollIntoView();
           el.focus();
@@ -44,7 +51,7 @@ const Layout = ({ children, location }) => {
     }
 
     handleExternalLinks();
-  }, [isLoading]);
+  }, [isLoading, location.hash]);
 
   return (
     <>
