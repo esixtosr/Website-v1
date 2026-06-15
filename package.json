@@ -1,24 +1,29 @@
 {
-  "name": "v4",
-  "description": "Personal Website V4",
+  "name": "website-v1",
+  "description": "Personal portfolio website showcasing cybersecurity, network engineering, and technical projects.",
   "version": "1.0.0",
-  "author": "Brittany Chiang <brittany.chiang@gmail.com>",
+  "author": "Edwin Sixtos Ruiz",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bchiang7/v4"
+    "url": "https://github.com/esixtosr/Website-v1"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "portfolio",
+    "cybersecurity",
+    "network-engineering"
   ],
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build": "gatsby build",
+    "build:pages": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
