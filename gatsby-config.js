@@ -33,6 +33,7 @@ module.exports = {
         icon: 'src/images/logo.png',
       },
     },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -124,11 +125,6 @@ module.exports = {
       },
     },
 
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-45666519-2`,
-      },
-    },
+    // Removed gatsby-plugin-offline to avoid service worker caching issues on GitHub Pages.
   ],
 };
