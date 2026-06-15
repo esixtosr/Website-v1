@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withPrefix } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { Head, Loader, Nav, Social, Email, Footer } from '@components';
@@ -11,10 +12,8 @@ const StyledContent = styled.div`
 `;
 
 const Layout = ({ children, location }) => {
-  const isHome =
-    location.pathname === '/' ||
-    location.pathname === '/Website-v1/' ||
-    location.pathname === '/Website-v1';
+  const homePath = withPrefix('/');
+  const isHome = location.pathname === '/' || location.pathname === homePath;
 
   const [isLoading, setIsLoading] = useState(isHome);
 
@@ -38,7 +37,7 @@ const Layout = ({ children, location }) => {
     }
 
     if (location.hash) {
-      const id = location.hash.substring(1); // location.hash without the '#'
+      const id = location.hash.substring(1);
 
       setTimeout(() => {
         const el = document.getElementById(id);
