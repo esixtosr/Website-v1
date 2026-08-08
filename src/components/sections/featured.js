@@ -542,6 +542,8 @@ const prefixGatsbyImageData = imageData => {
 
 const Featured = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [hoveredSlideCount, setHoveredSlideCount] = useState(0);
+  const [hoveredSlideIndex, setHoveredSlideIndex] = useState(0);
   const [openProject, setOpenProject] = useState(null);
 
   const data = useStaticQuery(graphql`
@@ -592,6 +594,18 @@ const Featured = () => {
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
+  useEffect(() => {
+    if (!hoveredProject || hoveredSlideCount < 2) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setHoveredSlideIndex(index => (index + 1) % hoveredSlideCount);
+    }, 1200);
+
+    return () => clearInterval(interval);
+  }, [hoveredProject, hoveredSlideCount]);
+
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
@@ -603,6 +617,7 @@ const Featured = () => {
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, gif, gallery, cta } = frontmatter;
+            const projectUrl = external || github || '#';
             const image = prefixGatsbyImageData(getImage(cover));
             const coverUrl = prefixAssetPath(cover?.publicURL);
             const gifUrl = prefixAssetPath(gif?.publicURL);
@@ -617,6 +632,11 @@ const Featured = () => {
             ]);
             const projectKey = `${title}-${i}`;
             const isGifHovered = hoveredProject === projectKey && gifUrl;
+            const hoverGallerySlide =
+              hoveredProject === projectKey && !gifUrl && gallerySlides?.length
+                ? gallerySlides[hoveredSlideIndex % gallerySlides.length]
+                : null;
+            const isPreviewHovered = isGifHovered || hoverGallerySlide;
 
             const handleImageClick = event => {
               if (!slides.length) {
@@ -626,7 +646,7 @@ const Featured = () => {
               event.preventDefault();
               setOpenProject({
                 title,
-                external,
+                destination: projectUrl,
                 slides,
                 activeSlide: gifUrl ? slides.findIndex(({ src }) => src === gifUrl) : 0,
               });
@@ -639,7 +659,7 @@ const Featured = () => {
                     <p className="project-overline">Featured Project</p>
 
                     <h3 className="project-title">
-                      <a href={external}>{title}</a>
+                      <a href={projectUrl}>{title}</a>
                     </h3>
 
                     <div
@@ -677,14 +697,34 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a
-                    href={external ? external : github ? github : '#'}
-                    className={isGifHovered ? 'is-gif-previewing' : undefined}
+                    href={projectUrl}
+                    className={isPreviewHovered ? 'is-gif-previewing' : undefined}
                     onClick={handleImageClick}
-                    onMouseEnter={() => gifUrl && setHoveredProject(projectKey)}
-                    onMouseLeave={() => gifUrl && setHoveredProject(null)}>
+                    onMouseEnter={() => {
+                      if (!gifUrl && !gallerySlides?.length) {
+                        return;
+                      }
+
+                      setHoveredSlideIndex(0);
+                      setHoveredSlideCount(gifUrl ? 0 : gallerySlides.length);
+                      setHoveredProject(projectKey);
+                    }}
+                    onMouseLeave={() => {
+                      setHoveredProject(null);
+                      setHoveredSlideCount(0);
+                      setHoveredSlideIndex(0);
+                    }}>
                     <GatsbyImage image={image} alt={title} className="img" />
                     {isGifHovered && (
                       <img src={gifUrl} alt="" aria-hidden="true" className="img gif-preview" />
+                    )}
+                    {hoverGallerySlide && (
+                      <img
+                        src={hoverGallerySlide.src}
+                        alt=""
+                        aria-hidden="true"
+                        className="img gif-preview"
+                      />
                     )}
                   </a>
                 </div>
@@ -725,8 +765,8 @@ const Featured = () => {
             aria-label={`Open ${openProject.title} project`}
             onClick={event => {
               event.stopPropagation();
-              if (openProject.external) {
-                window.open(openProject.external, '_blank', 'noopener,noreferrer');
+              if (openProject.destination && openProject.destination !== '#') {
+                window.open(openProject.destination, '_blank', 'noopener,noreferrer');
               }
             }}>
             <img

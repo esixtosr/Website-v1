@@ -1,8 +1,16 @@
 ---
 date: '2026-08-01'
 title: 'NetFlow'
-cover: './NetFlow_Image1.png'
+cover: './NetFlow_Topology.png'
 gif: './NetFlow.gif'
+gallery:
+  - './Netflow_Create_Bar.png'
+  - './Device_Simple.png'
+  - './Connection_Established.png'
+  - './SSID_Connections.png'
+  - './AP_Connections.png'
+  - './Server+Connections.png'
+  - './Switch_Profile.png'
 github: 'https://github.com/esixtosr/NetFlow'
 external: 'https://esixtosr.github.io/NetFlow/network/home-lab/'
 tech:
