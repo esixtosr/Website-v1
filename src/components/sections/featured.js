@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
@@ -286,6 +286,32 @@ const StyledProject = styled.li`
         background-color: var(--navy);
         mix-blend-mode: screen;
       }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 4;
+        border-radius: var(--border-radius);
+        box-shadow: inset 0 0 0 1px var(--navy);
+        pointer-events: none;
+      }
+
+      &.is-gif-previewing {
+        display: block;
+        overflow: hidden;
+        background: transparent;
+
+        &:before,
+        &:after {
+          opacity: 0;
+        }
+      }
     }
 
     .img {
@@ -300,10 +326,188 @@ const StyledProject = styled.li`
         filter: grayscale(100%) contrast(1) brightness(50%);
       }
     }
+
+    .gif-preview {
+      position: absolute;
+      inset: -12px;
+      z-index: 2;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
+      object-fit: cover;
+      border-radius: 0;
+      mix-blend-mode: normal;
+      filter: none;
+    }
   }
 `;
 
+const StyledPreviewModal = styled.div`
+  @keyframes previewEnter {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.96);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  padding: 50px;
+  background-color: rgba(2, 6, 23, 0.88);
+  cursor: zoom-out;
+
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+
+  .modal-preview-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: min(92vw, 1200px);
+    max-height: 85vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    animation: previewEnter 200ms ease-out;
+    cursor: pointer;
+  }
+
+  .modal-preview-button:focus {
+    outline: 2px solid var(--green);
+    outline-offset: 4px;
+  }
+
+  .modal-image {
+    display: block;
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    box-shadow: 0 20px 30px -15px var(--navy-shadow);
+  }
+
+  .modal-arrow {
+    ${({ theme }) => theme.mixins.flexCenter};
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(42px, 5vw, 56px);
+    height: clamp(42px, 5vw, 56px);
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent !important;
+    box-shadow: none;
+    color: var(--green);
+    cursor: pointer;
+    appearance: none;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: none;
+      transition: var(--transition);
+
+      path {
+        fill: none;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--lightest-slate);
+      outline: 0;
+    }
+  }
+
+  .modal-arrow-left {
+    left: clamp(16px, 4vw, 56px);
+  }
+
+  .modal-arrow-right {
+    right: clamp(16px, 4vw, 56px);
+  }
+
+  @media (max-width: 768px) {
+    .modal-arrow {
+      top: auto;
+      bottom: 25px;
+      transform: none;
+      width: 44px;
+      height: 44px;
+    }
+
+    .modal-arrow-left {
+      left: calc(50% - 56px);
+    }
+
+    .modal-arrow-right {
+      right: calc(50% - 56px);
+    }
+  }
+`;
+
+const ArrowLeftIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M12 21a9 9 0 1 0 0 -18a9 9 0 0 0 0 18" />
+    <path d="M8 12l4 4" />
+    <path d="M8 12h8" />
+    <path d="M12 8l-4 4" />
+  </svg>
+);
+
+const ArrowRightIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0 -18" />
+    <path d="M16 12l-4 -4" />
+    <path d="M16 12h-8" />
+    <path d="M12 16l4 -4" />
+  </svg>
+);
+
+const getUniqueSlides = slides =>
+  slides.filter(
+    (slide, index) => slide?.src && slides.findIndex(item => item?.src === slide.src) === index,
+  );
+
 const Featured = () => {
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [openProject, setOpenProject] = useState(null);
+
   const data = useStaticQuery(graphql`
     {
       featured: allMarkdownRemark(
@@ -315,9 +519,16 @@ const Featured = () => {
             frontmatter {
               title
               cover {
+                publicURL
                 childImageSharp {
                   gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
+              }
+              gif {
+                publicURL
+              }
+              gallery {
+                publicURL
               }
               tech
               github
@@ -355,8 +566,34 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, gif, gallery, cta } = frontmatter;
             const image = getImage(cover);
+            const gifUrl = gif?.publicURL;
+            const gallerySlides = gallery?.map(({ publicURL }) => ({
+              src: publicURL,
+              alt: `${title} preview`,
+            }));
+            const slides = getUniqueSlides([
+              { src: cover?.publicURL, alt: `${title} cover` },
+              ...(gallerySlides || []),
+              { src: gifUrl, alt: `${title} animated preview` },
+            ]);
+            const projectKey = `${title}-${i}`;
+            const isGifHovered = hoveredProject === projectKey && gifUrl;
+
+            const handleImageClick = event => {
+              if (!slides.length) {
+                return;
+              }
+
+              event.preventDefault();
+              setOpenProject({
+                title,
+                external,
+                slides,
+                activeSlide: gifUrl ? slides.findIndex(({ src }) => src === gifUrl) : 0,
+              });
+            };
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -402,14 +639,83 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
+                  <a
+                    href={external ? external : github ? github : '#'}
+                    className={isGifHovered ? 'is-gif-previewing' : undefined}
+                    onClick={handleImageClick}
+                    onMouseEnter={() => gifUrl && setHoveredProject(projectKey)}
+                    onMouseLeave={() => gifUrl && setHoveredProject(null)}>
                     <GatsbyImage image={image} alt={title} className="img" />
+                    {isGifHovered && (
+                      <img src={gifUrl} alt="" aria-hidden="true" className="img gif-preview" />
+                    )}
                   </a>
                 </div>
               </StyledProject>
             );
           })}
       </StyledProjectsGrid>
+
+      {openProject && (
+        <StyledPreviewModal
+          role="presentation"
+          onClick={() => setOpenProject(null)}
+          onKeyDown={({ key }) => {
+            if (key === 'Escape') {
+              setOpenProject(null);
+            }
+          }}>
+          {openProject.slides.length > 1 && (
+            <button
+              type="button"
+              className="modal-arrow modal-arrow-left"
+              aria-label="Previous preview"
+              onClick={event => {
+                event.stopPropagation();
+                setOpenProject(project => ({
+                  ...project,
+                  activeSlide:
+                    (project.activeSlide - 1 + project.slides.length) % project.slides.length,
+                }));
+              }}>
+              <ArrowLeftIcon />
+            </button>
+          )}
+
+          <button
+            type="button"
+            className="modal-preview-button"
+            aria-label={`Open ${openProject.title} project`}
+            onClick={event => {
+              event.stopPropagation();
+              if (openProject.external) {
+                window.open(openProject.external, '_blank', 'noopener,noreferrer');
+              }
+            }}>
+            <img
+              src={openProject.slides[openProject.activeSlide].src}
+              alt={openProject.slides[openProject.activeSlide].alt}
+              className="modal-image"
+            />
+          </button>
+
+          {openProject.slides.length > 1 && (
+            <button
+              type="button"
+              className="modal-arrow modal-arrow-right"
+              aria-label="Next preview"
+              onClick={event => {
+                event.stopPropagation();
+                setOpenProject(project => ({
+                  ...project,
+                  activeSlide: (project.activeSlide + 1) % project.slides.length,
+                }));
+              }}>
+              <ArrowRightIcon />
+            </button>
+          )}
+        </StyledPreviewModal>
+      )}
     </section>
   );
 };

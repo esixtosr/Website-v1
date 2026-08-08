@@ -41,7 +41,6 @@ const Layout = ({ children, location }) => {
 
       setTimeout(() => {
         const el = document.getElementById(id);
-
         if (el) {
           el.scrollIntoView();
           el.focus();
