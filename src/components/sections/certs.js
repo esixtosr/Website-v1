@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { srConfig } from '@config';
@@ -171,6 +171,42 @@ const StyledCertificateCard = styled.li`
   }
 `;
 
+const prefixAssetPath = url => {
+  if (!url || !url.startsWith('/static/')) {
+    return url;
+  }
+
+  return withPrefix(url);
+};
+
+const prefixSrcSet = srcSet =>
+  srcSet?.replace(
+    /(^|,\s*)(\/static\/[^\s,]+)/g,
+    (match, separator, url) => `${separator}${prefixAssetPath(url)}`,
+  );
+
+const prefixGatsbyImageData = imageData => {
+  if (!imageData?.images) {
+    return imageData;
+  }
+
+  return {
+    ...imageData,
+    images: {
+      ...imageData.images,
+      fallback: imageData.images.fallback && {
+        ...imageData.images.fallback,
+        src: prefixAssetPath(imageData.images.fallback.src),
+        srcSet: prefixSrcSet(imageData.images.fallback.srcSet),
+      },
+      sources: imageData.images.sources?.map(source => ({
+        ...source,
+        srcSet: prefixSrcSet(source.srcSet),
+      })),
+    },
+  };
+};
+
 const Certificates = () => {
   const revealTitle = useRef(null);
   const revealCards = useRef([]);
@@ -238,8 +274,10 @@ const Certificates = () => {
     const map = {};
     data.certificateImages.edges.forEach(({ node }) => {
       map[node.base.trim()] = {
-        imageData: node.childImageSharp ? getImage(node.childImageSharp) : null,
-        publicURL: node.publicURL,
+        imageData: node.childImageSharp
+          ? prefixGatsbyImageData(getImage(node.childImageSharp))
+          : null,
+        publicURL: prefixAssetPath(node.publicURL),
       };
     });
     return map;
