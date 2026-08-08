@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withPrefix } from 'gatsby';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
@@ -66,13 +67,17 @@ const Hero = () => {
     <>
       <p>
         I’m a Cybersecurity and Network Engineering student focused on secure infrastructure,
-        systems administration, and network defense. I enjoy building p ractical, resilient
+        systems administration, and network defense. I enjoy building practical, resilient
         environments and solving technical problems hands-on.
       </p>
     </>
   );
   const five = (
-    <a className="email-link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+    <a
+      className="email-link"
+      href={withPrefix('/resume.pdf')}
+      target="_blank"
+      rel="noopener noreferrer">
       Download Resume
     </a>
   );
