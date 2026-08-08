@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import sr from '@utils/sr';
@@ -504,6 +504,42 @@ const getUniqueSlides = slides =>
     (slide, index) => slide?.src && slides.findIndex(item => item?.src === slide.src) === index,
   );
 
+const prefixAssetPath = url => {
+  if (!url || !url.startsWith('/static/')) {
+    return url;
+  }
+
+  return withPrefix(url);
+};
+
+const prefixSrcSet = srcSet =>
+  srcSet?.replace(
+    /(^|,\s*)(\/static\/[^\s,]+)/g,
+    (match, separator, url) => `${separator}${prefixAssetPath(url)}`,
+  );
+
+const prefixGatsbyImageData = imageData => {
+  if (!imageData?.images) {
+    return imageData;
+  }
+
+  return {
+    ...imageData,
+    images: {
+      ...imageData.images,
+      fallback: imageData.images.fallback && {
+        ...imageData.images.fallback,
+        src: prefixAssetPath(imageData.images.fallback.src),
+        srcSet: prefixSrcSet(imageData.images.fallback.srcSet),
+      },
+      sources: imageData.images.sources?.map(source => ({
+        ...source,
+        srcSet: prefixSrcSet(source.srcSet),
+      })),
+    },
+  };
+};
+
 const Featured = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [openProject, setOpenProject] = useState(null);
@@ -567,14 +603,15 @@ const Featured = () => {
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, gif, gallery, cta } = frontmatter;
-            const image = getImage(cover);
-            const gifUrl = gif?.publicURL;
+            const image = prefixGatsbyImageData(getImage(cover));
+            const coverUrl = prefixAssetPath(cover?.publicURL);
+            const gifUrl = prefixAssetPath(gif?.publicURL);
             const gallerySlides = gallery?.map(({ publicURL }) => ({
-              src: publicURL,
+              src: prefixAssetPath(publicURL),
               alt: `${title} preview`,
             }));
             const slides = getUniqueSlides([
-              { src: cover?.publicURL, alt: `${title} cover` },
+              { src: coverUrl, alt: `${title} cover` },
               ...(gallerySlides || []),
               { src: gifUrl, alt: `${title} animated preview` },
             ]);
