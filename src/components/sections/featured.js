@@ -307,6 +307,10 @@ const StyledProject = styled.li`
         overflow: hidden;
         background: transparent;
 
+        .gatsby-image-wrapper {
+          opacity: 0;
+        }
+
         &:before,
         &:after {
           opacity: 0;
@@ -333,7 +337,10 @@ const StyledProject = styled.li`
       z-index: 2;
       width: calc(100% + 24px);
       height: calc(100% + 24px);
+      max-width: none;
+      max-height: none;
       object-fit: cover;
+      object-position: center;
       border-radius: 0;
       mix-blend-mode: normal;
       filter: none;

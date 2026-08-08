@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { useStaticQuery, graphql, withPrefix } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
@@ -151,9 +152,55 @@ const StyledText = styled.div`
   }
 `;
 
+const prefixAssetPath = url => {
+  if (!url || !url.startsWith('/static/')) {
+    return url;
+  }
+
+  return withPrefix(url);
+};
+
+const prefixSrcSet = srcSet =>
+  srcSet?.replace(
+    /(^|,\s*)(\/static\/[^\s,]+)/g,
+    (match, separator, url) => `${separator}${prefixAssetPath(url)}`,
+  );
+
+const prefixGatsbyImageData = imageData => {
+  if (!imageData?.images) {
+    return imageData;
+  }
+
+  return {
+    ...imageData,
+    images: {
+      ...imageData.images,
+      fallback: imageData.images.fallback && {
+        ...imageData.images.fallback,
+        src: prefixAssetPath(imageData.images.fallback.src),
+        srcSet: prefixSrcSet(imageData.images.fallback.srcSet),
+      },
+      sources: imageData.images.sources?.map(source => ({
+        ...source,
+        srcSet: prefixSrcSet(source.srcSet),
+      })),
+    },
+  };
+};
+
 const Education = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const data = useStaticQuery(graphql`
+    {
+      purdue: file(relativePath: { eq: "purdue.png" }) {
+        childImageSharp {
+          gatsbyImageData(width: 700, quality: 95, formats: [AUTO, WEBP, AVIF])
+        }
+      }
+    }
+  `);
+  const purdue = prefixGatsbyImageData(getImage(data.purdue));
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -179,14 +226,7 @@ const Education = () => {
       <div className="inner">
         <StyledPic>
           <div className="wrapper">
-            <StaticImage
-              className="img"
-              src="../../images/purdue.png"
-              width={700}
-              quality={95}
-              formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Purdue University entrance arch"
-            />
+            <GatsbyImage image={purdue} className="img" alt="Purdue University entrance arch" />
           </div>
         </StyledPic>
 

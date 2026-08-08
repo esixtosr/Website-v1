@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { useStaticQuery, graphql, withPrefix } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
@@ -115,9 +116,55 @@ const StyledPic = styled.div`
   }
 `;
 
+const prefixAssetPath = url => {
+  if (!url || !url.startsWith('/static/')) {
+    return url;
+  }
+
+  return withPrefix(url);
+};
+
+const prefixSrcSet = srcSet =>
+  srcSet?.replace(
+    /(^|,\s*)(\/static\/[^\s,]+)/g,
+    (match, separator, url) => `${separator}${prefixAssetPath(url)}`,
+  );
+
+const prefixGatsbyImageData = imageData => {
+  if (!imageData?.images) {
+    return imageData;
+  }
+
+  return {
+    ...imageData,
+    images: {
+      ...imageData.images,
+      fallback: imageData.images.fallback && {
+        ...imageData.images.fallback,
+        src: prefixAssetPath(imageData.images.fallback.src),
+        srcSet: prefixSrcSet(imageData.images.fallback.srcSet),
+      },
+      sources: imageData.images.sources?.map(source => ({
+        ...source,
+        srcSet: prefixSrcSet(source.srcSet),
+      })),
+    },
+  };
+};
+
 const About = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const data = useStaticQuery(graphql`
+    {
+      portrait: file(relativePath: { eq: "me.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(width: 500, quality: 95, formats: [AUTO, WEBP, AVIF])
+        }
+      }
+    }
+  `);
+  const portrait = prefixGatsbyImageData(getImage(data.portrait));
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -189,14 +236,7 @@ const About = () => {
 
         <StyledPic>
           <div className="wrapper">
-            <StaticImage
-              className="img"
-              src="../../images/me.jpg"
-              width={500}
-              quality={95}
-              formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Portrait of Edwin Sixtos Ruiz"
-            />
+            <GatsbyImage image={portrait} className="img" alt="Portrait of Edwin Sixtos Ruiz" />
           </div>
         </StyledPic>
       </div>

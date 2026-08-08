@@ -107,38 +107,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 exports.onPreBootstrap = ensureDev404PageComponent;
 
-const writeDev404PageData = () => {
+exports.createPagesStatefully = ({ actions }) => {
   if (process.env.NODE_ENV === 'production' || process.env.gatsby_executing_command !== 'develop') {
     return;
   }
 
   ensureDev404PageComponent();
 
-  const dev404PageDataDir = path.join(__dirname, 'public/page-data/dev-404-page');
-  const dev404PageDataPath = path.join(dev404PageDataDir, 'page-data.json');
-  const page404DataPath = path.join(__dirname, 'public/page-data/404/page-data.json');
-  const page404Data = fs.existsSync(page404DataPath)
-    ? JSON.parse(fs.readFileSync(page404DataPath, 'utf8'))
-    : {};
-
-  fs.mkdirSync(dev404PageDataDir, { recursive: true });
-  fs.writeFileSync(
-    dev404PageDataPath,
-    JSON.stringify({
-      componentChunkName: 'component---src-pages-404-js',
-      path: '/dev-404-page/',
-      result: { pageContext: {} },
-      staticQueryHashes: page404Data.staticQueryHashes || [],
-    }),
-  );
+  actions.createPage({
+    component: path.join(__dirname, '.cache/dev-404-page.js'),
+    path: '/dev-404-page/',
+  });
 };
-
-exports.onPostBootstrap = writeDev404PageData;
 exports.onPreExtractQueries = ensureDev404PageComponent;
-
-exports.onCreateDevServer = () => {
-  writeDev404PageData();
-};
 
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
