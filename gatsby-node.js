@@ -6,6 +6,9 @@
 
 const path = require('path');
 const fs = require('fs');
+const { EventEmitter } = require('events');
+
+EventEmitter.defaultMaxListeners = Math.max(EventEmitter.defaultMaxListeners, 50);
 
 const kebabCase = value =>
   value
