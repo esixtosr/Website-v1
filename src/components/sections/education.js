@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { useStaticQuery, graphql, withPrefix } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
@@ -65,6 +64,9 @@ const StyledPic = styled.div`
     }
 
     .img {
+      display: block;
+      width: 100%;
+      height: auto;
       position: relative;
       border-radius: var(--border-radius);
       mix-blend-mode: multiply;
@@ -160,47 +162,17 @@ const prefixAssetPath = url => {
   return withPrefix(url);
 };
 
-const prefixSrcSet = srcSet =>
-  srcSet?.replace(
-    /(^|,\s*)(\/static\/[^\s,]+)/g,
-    (match, separator, url) => `${separator}${prefixAssetPath(url)}`,
-  );
-
-const prefixGatsbyImageData = imageData => {
-  if (!imageData?.images) {
-    return imageData;
-  }
-
-  return {
-    ...imageData,
-    images: {
-      ...imageData.images,
-      fallback: imageData.images.fallback && {
-        ...imageData.images.fallback,
-        src: prefixAssetPath(imageData.images.fallback.src),
-        srcSet: prefixSrcSet(imageData.images.fallback.srcSet),
-      },
-      sources: imageData.images.sources?.map(source => ({
-        ...source,
-        srcSet: prefixSrcSet(source.srcSet),
-      })),
-    },
-  };
-};
-
 const Education = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
   const data = useStaticQuery(graphql`
     {
       purdue: file(relativePath: { eq: "purdue.png" }) {
-        childImageSharp {
-          gatsbyImageData(width: 700, quality: 95, formats: [AUTO, WEBP, AVIF])
-        }
+        publicURL
       }
     }
   `);
-  const purdue = prefixGatsbyImageData(getImage(data.purdue));
+  const purdue = prefixAssetPath(data.purdue?.publicURL);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -226,7 +198,7 @@ const Education = () => {
       <div className="inner">
         <StyledPic>
           <div className="wrapper">
-            <GatsbyImage image={purdue} className="img" alt="Purdue University entrance arch" />
+            <img src={purdue} className="img" alt="Purdue University entrance arch" />
           </div>
         </StyledPic>
 

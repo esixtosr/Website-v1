@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { useStaticQuery, graphql, withPrefix } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
@@ -82,6 +81,9 @@ const StyledPic = styled.div`
     }
 
     .img {
+      display: block;
+      width: 100%;
+      height: auto;
       position: relative;
       border-radius: var(--border-radius);
       mix-blend-mode: multiply;
@@ -124,47 +126,17 @@ const prefixAssetPath = url => {
   return withPrefix(url);
 };
 
-const prefixSrcSet = srcSet =>
-  srcSet?.replace(
-    /(^|,\s*)(\/static\/[^\s,]+)/g,
-    (match, separator, url) => `${separator}${prefixAssetPath(url)}`,
-  );
-
-const prefixGatsbyImageData = imageData => {
-  if (!imageData?.images) {
-    return imageData;
-  }
-
-  return {
-    ...imageData,
-    images: {
-      ...imageData.images,
-      fallback: imageData.images.fallback && {
-        ...imageData.images.fallback,
-        src: prefixAssetPath(imageData.images.fallback.src),
-        srcSet: prefixSrcSet(imageData.images.fallback.srcSet),
-      },
-      sources: imageData.images.sources?.map(source => ({
-        ...source,
-        srcSet: prefixSrcSet(source.srcSet),
-      })),
-    },
-  };
-};
-
 const About = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
   const data = useStaticQuery(graphql`
     {
       portrait: file(relativePath: { eq: "me.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(width: 500, quality: 95, formats: [AUTO, WEBP, AVIF])
-        }
+        publicURL
       }
     }
   `);
-  const portrait = prefixGatsbyImageData(getImage(data.portrait));
+  const portrait = prefixAssetPath(data.portrait?.publicURL);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -236,7 +208,7 @@ const About = () => {
 
         <StyledPic>
           <div className="wrapper">
-            <GatsbyImage image={portrait} className="img" alt="Portrait of Edwin Sixtos Ruiz" />
+            <img src={portrait} className="img" alt="Portrait of Edwin Sixtos Ruiz" />
           </div>
         </StyledPic>
       </div>
