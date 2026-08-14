@@ -22,3 +22,4 @@ skills:
 - Installed and maintained classroom and lab network infrastructure.
 - Terminated Cat6/Cat6A cabling and supported switches, routers, and wireless access points.
 - Configured network equipment, servers, workstations, and instructional lab systems.
+- Helped support instructional, research, and administrative technology environments.

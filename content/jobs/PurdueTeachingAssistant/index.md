@@ -22,3 +22,4 @@ skills:
 - Mentored students in Linux, Windows Server, Active Directory, virtualization, and system administration labs.
 - Supported Nutanix HCI and virtualized lab environments for hands-on coursework.
 - Reinforced troubleshooting, documentation, and security fundamentals.
+- Assisted with lab preparation, technical questions, and student support during coursework.

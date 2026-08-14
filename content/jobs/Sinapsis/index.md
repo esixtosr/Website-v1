@@ -22,3 +22,4 @@ skills:
 - Support security governance, risk, and compliance activities.
 - Maintain ISO 27001-aligned policies, evidence tracking, and control documentation.
 - Assist with infrastructure security planning across access control, backup strategy, and network segmentation.
+- Coordinate technical and administrative security tasks across startup operations.

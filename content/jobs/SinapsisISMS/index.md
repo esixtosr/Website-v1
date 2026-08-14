@@ -1,6 +1,6 @@
 ---
 date: '2025-05-01'
-title: 'ISMS Project Lead'
+title: 'Cybersecurity ISMS Intern'
 category: 'ISMS Buildout'
 company: 'Sinapsis.tech'
 location: 'Remote'
@@ -22,3 +22,4 @@ skills:
 - Led initial ISO/IEC 27001:2022 ISMS buildout.
 - Created governance documentation, policy templates, and risk assessment structure.
 - Built foundational GRC artifacts including risk register support, control mapping, and audit evidence organization.
+- Supported security awareness material development and ISMS documentation cleanup.
