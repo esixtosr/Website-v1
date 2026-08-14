@@ -1,6 +1,7 @@
 ---
 date: '3'
 title: 'Build a Spotify Connected App'
+featured: false
 cover: './course-card.png'
 gallery:
   - './demo.png'

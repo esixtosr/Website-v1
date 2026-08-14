@@ -579,6 +579,7 @@ const Featured = () => {
               github
               external
               cta
+              featured
             }
             html
           }
@@ -587,7 +588,9 @@ const Featured = () => {
     }
   `);
 
-  const featuredProjects = data.featured.edges.filter(({ node }) => node);
+  const featuredProjects = data.featured.edges.filter(
+    ({ node }) => node && node.frontmatter.featured !== false,
+  );
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -625,6 +628,7 @@ const Featured = () => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, gif, gallery, cta } = frontmatter;
             const projectUrl = external || github || '#';
+            const hasProjectUrl = projectUrl !== '#';
             const image = prefixGatsbyImageData(getImage(cover));
             const coverUrl = prefixAssetPath(cover?.publicURL);
             const gifUrl = prefixAssetPath(gif?.publicURL);
@@ -666,7 +670,7 @@ const Featured = () => {
                     <p className="project-overline">Featured Project</p>
 
                     <h3 className="project-title">
-                      <a href={projectUrl}>{title}</a>
+                      {hasProjectUrl ? <a href={projectUrl}>{title}</a> : <span>{title}</span>}
                     </h3>
 
                     <div

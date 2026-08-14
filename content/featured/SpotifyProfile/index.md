@@ -1,6 +1,7 @@
 ---
 date: '2'
 title: 'Spotify Profile'
+featured: false
 cover: './demo.png'
 github: 'https://github.com/bchiang7/spotify-profile'
 external: 'https://spotify-profile.herokuapp.com/'

@@ -1,6 +1,7 @@
 ---
 date: '1'
 title: 'Halcyon Theme'
+featured: false
 cover: './halcyon.png'
 gallery:
   - './demo.png'
