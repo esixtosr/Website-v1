@@ -1,5 +1,5 @@
 ---
-date: '2026-08-04'
+date: '2026-08-02'
 title: 'Enterprise SIEM Lab'
 cover: './01-mitre-attack-dashboard.png'
 gallery:

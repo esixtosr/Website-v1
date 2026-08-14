@@ -1,5 +1,5 @@
 ---
-date: '2026-08-03'
+date: '2026-08-04'
 title: 'CryptoChat'
 cover: './01-cryptochat-main-verified-chat.png'
 gallery:

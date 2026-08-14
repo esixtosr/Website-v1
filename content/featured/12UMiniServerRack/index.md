@@ -1,5 +1,5 @@
 ---
-date: '2026-08-02'
+date: '2026-08-03'
 title: '12U Bare-Metal Homelab'
 cover: './Unifi_Dashboard.png'
 gallery:
