@@ -2,15 +2,20 @@ const fs = require('fs');
 const path = require('path');
 
 const cacheDir = path.join(__dirname, '..', '.cache');
-const dev404Source = path.join(
-  __dirname,
-  '..',
-  'node_modules/gatsby/dist/internal-plugins/dev-404-page/raw_dev-404-page.js',
-);
 const dev404Destination = path.join(cacheDir, 'dev-404-page.js');
+const dev404PageSource = `import React from 'react';
+
+const Dev404Page = ({ location }) => (
+  <main style={{ padding: '3rem', fontFamily: 'system-ui, sans-serif' }}>
+    <h1>Page not found</h1>
+    <p>
+      Gatsby could not find a development page for <code>{location?.pathname}</code>.
+    </p>
+  </main>
+);
+
+export default Dev404Page;
+`;
 
 fs.mkdirSync(cacheDir, { recursive: true });
-
-if (fs.existsSync(dev404Source)) {
-  fs.copyFileSync(dev404Source, dev404Destination);
-}
+fs.writeFileSync(dev404Destination, dev404PageSource);

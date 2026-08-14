@@ -16,23 +16,29 @@ const kebabCase = value =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
+const dev404PageSource = `import React from 'react';
+
+const Dev404Page = ({ location }) => (
+  <main style={{ padding: '3rem', fontFamily: 'system-ui, sans-serif' }}>
+    <h1>Page not found</h1>
+    <p>
+      Gatsby could not find a development page for <code>{location?.pathname}</code>.
+    </p>
+  </main>
+);
+
+export default Dev404Page;
+`;
+
 const ensureDev404PageComponent = () => {
   if (process.env.NODE_ENV === 'production' || process.env.gatsby_executing_command !== 'develop') {
     return;
   }
 
-  const source = path.join(
-    __dirname,
-    'node_modules/gatsby/dist/internal-plugins/dev-404-page/raw_dev-404-page.js',
-  );
   const destination = path.join(__dirname, '.cache/dev-404-page.js');
 
-  if (!fs.existsSync(source)) {
-    return;
-  }
-
   fs.mkdirSync(path.dirname(destination), { recursive: true });
-  fs.copyFileSync(source, destination);
+  fs.writeFileSync(destination, dev404PageSource);
 };
 
 exports.createSchemaCustomization = ({ actions }) => {
