@@ -51,6 +51,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       cover: File @fileByRelativePath
       gif: File @fileByRelativePath
       gallery: [File] @fileByRelativePath
+      cta: String
+      featured: Boolean
     }
   `);
 };

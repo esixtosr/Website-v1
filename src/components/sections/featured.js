@@ -598,10 +598,13 @@ const Featured = () => {
             const hasProjectUrl = projectUrl !== '#';
             const coverUrl = prefixAssetPath(cover?.publicURL);
             const gifUrl = prefixAssetPath(gif?.publicURL);
-            const gallerySlides = gallery?.map(({ publicURL }) => ({
-              src: prefixAssetPath(publicURL),
-              alt: `${title} preview`,
-            }));
+            const gallerySlides = (gallery || [])
+              .filter(Boolean)
+              .map(({ publicURL }) => ({
+                src: prefixAssetPath(publicURL),
+                alt: `${title} preview`,
+              }))
+              .filter(({ src }) => Boolean(src));
             const slides = getUniqueSlides([
               { src: coverUrl, alt: `${title} cover` },
               ...(gallerySlides || []),
