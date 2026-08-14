@@ -119,11 +119,19 @@ const StyledPic = styled.div`
 `;
 
 const prefixAssetPath = url => {
-  if (!url || !url.startsWith('/static/')) {
+  if (!url) {
     return url;
   }
 
-  return withPrefix(url);
+  const pathPrefix = withPrefix('/').replace(/\/$/, '');
+  const isLocalRootPreview =
+    typeof window !== 'undefined' && pathPrefix && !window.location.pathname.startsWith(pathPrefix);
+
+  if (isLocalRootPreview && url.startsWith(`${pathPrefix}/static/`)) {
+    return url.replace(pathPrefix, '');
+  }
+
+  return url.startsWith('/static/') ? withPrefix(url) : url;
 };
 
 const About = () => {
