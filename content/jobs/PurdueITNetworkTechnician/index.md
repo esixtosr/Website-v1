@@ -1,6 +1,7 @@
 ---
 date: '2024-05-01'
-title: 'IT / Network Technician - Summer Intern'
+title: 'IT / Network Technician'
+category: 'Network Support'
 company: 'Purdue Polytechnic'
 location: 'West Lafayette, IN'
 range: 'Summers 2024 - 2026'

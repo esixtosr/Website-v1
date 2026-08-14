@@ -47,6 +47,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(`
     type MarkdownRemarkFrontmatter {
       title: String
+      category: String
       order: Int
       cover: File @fileByRelativePath
       gif: File @fileByRelativePath

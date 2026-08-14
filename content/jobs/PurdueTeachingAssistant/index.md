@@ -1,6 +1,7 @@
 ---
-date: '2024-01-01'
-title: 'Teaching Assistant - System Administration'
+date: '2024-06-01'
+title: 'System Administration TA'
+category: 'Systems Teaching'
 company: 'Purdue Polytechnic'
 location: 'West Lafayette, IN'
 range: 'January 2024 - Present'

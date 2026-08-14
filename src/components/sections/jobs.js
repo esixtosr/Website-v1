@@ -152,7 +152,7 @@ const StyledTabPanel = styled.div`
 
   h3 {
     margin-bottom: 2px;
-    font-size: var(--fz-xxl);
+    font-size: clamp(var(--fz-lg), 2vw, var(--fz-xxl));
     font-weight: 500;
     line-height: 1.3;
 
@@ -162,18 +162,25 @@ const StyledTabPanel = styled.div`
   }
 
   .range {
-    margin-bottom: 25px;
+    margin-bottom: 0;
     color: var(--light-slate);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
   }
 `;
+
+const StyledJobHeader = styled.div`
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--lightest-navy);
+`;
+
 const StyledJobContent = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(240px, 320px);
   gap: 45px;
   align-items: start;
-  margin-top: 8px;
+  margin-top: 0;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
@@ -182,7 +189,7 @@ const StyledJobContent = styled.div`
 `;
 
 const StyledSkillsSection = styled.div`
-  margin-top: -70px;
+  margin-top: 0;
   align-self: start;
 
   @media (max-width: 900px) {
@@ -234,6 +241,7 @@ const Jobs = () => {
           node {
             frontmatter {
               title
+              category
               company
               location
               range
@@ -329,7 +337,7 @@ const Jobs = () => {
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={onKeyDown}>
           {jobsData &&
             jobsData.map(({ node }, i) => {
-              const { company } = node.frontmatter;
+              const { category, company } = node.frontmatter;
 
               return (
                 <StyledTabButton
@@ -342,7 +350,7 @@ const Jobs = () => {
                   tabIndex={activeTabId === i ? '0' : '-1'}
                   aria-selected={activeTabId === i}
                   aria-controls={`panel-${i}`}>
-                  <span>{company}</span>
+                  <span>{category || company}</span>
                 </StyledTabButton>
               );
             })}
@@ -365,17 +373,19 @@ const Jobs = () => {
                     aria-labelledby={`tab-${i}`}
                     aria-hidden={activeTabId !== i}
                     hidden={activeTabId !== i}>
-                    <h3>
-                      <span>{title}</span>
-                      <span className="company">
-                        &nbsp;@&nbsp;
-                        <a href={url} className="inline-link" target="_blank" rel="noreferrer">
-                          {company}
-                        </a>
-                      </span>
-                    </h3>
+                    <StyledJobHeader>
+                      <h3>
+                        <span>{title}</span>
+                        <span className="company">
+                          &nbsp;@&nbsp;
+                          <a href={url} className="inline-link" target="_blank" rel="noreferrer">
+                            {company}
+                          </a>
+                        </span>
+                      </h3>
 
-                    <p className="range">{range}</p>
+                      <p className="range">{range}</p>
+                    </StyledJobHeader>
 
                     <StyledJobContent>
                       <div dangerouslySetInnerHTML={{ __html: html }} />
