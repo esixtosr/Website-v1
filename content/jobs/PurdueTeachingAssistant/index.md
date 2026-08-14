@@ -1,7 +1,7 @@
 ---
 date: '2024-01-01'
 title: 'Teaching Assistant - System Administration'
-company: 'Purdue University - Polytechnic Institute'
+company: 'Purdue Polytechnic'
 location: 'West Lafayette, IN'
 range: 'January 2024 - Present'
 url: 'https://polytechnic.purdue.edu/'
@@ -18,5 +18,6 @@ skills:
     level: 90
 ---
 
-- Mentor students in Linux, Windows Server, Active Directory, Group Policy, virtualization, and enterprise systems administration labs.
-- Support Nutanix HCI and virtualized lab environments while reinforcing troubleshooting, documentation, and security fundamentals.
+- Mentored students in Linux, Windows Server, Active Directory, virtualization, and system administration labs.
+- Supported Nutanix HCI and virtualized lab environments for hands-on coursework.
+- Reinforced troubleshooting, documentation, and security fundamentals.
