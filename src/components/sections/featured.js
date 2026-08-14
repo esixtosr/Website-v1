@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useStaticQuery, graphql, withPrefix } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
@@ -307,10 +306,6 @@ const StyledProject = styled.li`
         overflow: hidden;
         background: transparent;
 
-        .gatsby-image-wrapper {
-          opacity: 0;
-        }
-
         &:before,
         &:after {
           opacity: 0;
@@ -319,6 +314,9 @@ const StyledProject = styled.li`
     }
 
     .img {
+      display: block;
+      width: 100%;
+      height: auto;
       border-radius: var(--border-radius);
       mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1) brightness(90%);
@@ -519,34 +517,6 @@ const prefixAssetPath = url => {
   return withPrefix(url);
 };
 
-const prefixSrcSet = srcSet =>
-  srcSet?.replace(
-    /(^|,\s*)(\/static\/[^\s,]+)/g,
-    (match, separator, url) => `${separator}${prefixAssetPath(url)}`,
-  );
-
-const prefixGatsbyImageData = imageData => {
-  if (!imageData?.images) {
-    return imageData;
-  }
-
-  return {
-    ...imageData,
-    images: {
-      ...imageData.images,
-      fallback: imageData.images.fallback && {
-        ...imageData.images.fallback,
-        src: prefixAssetPath(imageData.images.fallback.src),
-        srcSet: prefixSrcSet(imageData.images.fallback.srcSet),
-      },
-      sources: imageData.images.sources?.map(source => ({
-        ...source,
-        srcSet: prefixSrcSet(source.srcSet),
-      })),
-    },
-  };
-};
-
 const Featured = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [hoveredSlideCount, setHoveredSlideCount] = useState(0);
@@ -565,9 +535,6 @@ const Featured = () => {
               title
               cover {
                 publicURL
-                childImageSharp {
-                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-                }
               }
               gif {
                 publicURL
@@ -629,7 +596,6 @@ const Featured = () => {
             const { external, title, tech, github, cover, gif, gallery, cta } = frontmatter;
             const projectUrl = external || github || '#';
             const hasProjectUrl = projectUrl !== '#';
-            const image = prefixGatsbyImageData(getImage(cover));
             const coverUrl = prefixAssetPath(cover?.publicURL);
             const gifUrl = prefixAssetPath(gif?.publicURL);
             const gallerySlides = gallery?.map(({ publicURL }) => ({
@@ -725,7 +691,7 @@ const Featured = () => {
                       setHoveredSlideCount(0);
                       setHoveredSlideIndex(0);
                     }}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                    <img src={coverUrl} alt={title} className="img" />
                     {isGifHovered && (
                       <img src={gifUrl} alt="" aria-hidden="true" className="img gif-preview" />
                     )}
