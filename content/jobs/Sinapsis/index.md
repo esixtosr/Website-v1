@@ -2,8 +2,8 @@
 date: '2025-08-01'
 title: 'Cybersecurity Analyst'
 company: 'Sinapsis.tech'
-location: 'Remote'
-range: 'May 2025 - Present'
+location: 'Remote / Part-Time'
+range: 'August 2025 - Present'
 url: 'https://sinapsis.tech'
 skills:
   - name: ISMS Documentation
@@ -18,7 +18,6 @@ skills:
     level: 88
 ---
 
-- Supported ISO 27001-aligned ISMS documentation, governance, and policy development.
-- Helped structure risk treatment, awareness materials, and compliance evidence.
-- Contributed to secure infrastructure planning and operational security workflows.
-- Assisted with cross-functional technical and administrative coordination.
+- Support security governance, risk, and compliance activities.
+- Maintain ISO 27001-aligned policies, evidence tracking, and control documentation.
+- Assist with infrastructure security planning across access control, backup strategy, and network segmentation.

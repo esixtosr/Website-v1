@@ -1,5 +1,5 @@
 ---
-date: '2024-01-01'
+date: '2024-06-01'
 title: 'Teaching Assistant - System Administration'
 company: 'Purdue Polytechnic'
 location: 'West Lafayette, IN'
