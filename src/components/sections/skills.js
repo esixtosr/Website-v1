@@ -176,13 +176,13 @@ const Skills = () => {
   const getIconName = title => {
     switch (title) {
       case 'Cybersecurity & Networking':
-        return 'Codepen';
+        return 'ShieldLock';
       case 'Systems & Infrastructure':
-        return 'Folder';
+        return 'Server';
       case 'Governance, Risk & Compliance':
-        return 'Bookmark';
+        return 'Folder';
       case 'Scripting & Automation':
-        return 'Fork';
+        return 'Terminal';
       default:
         return 'Hex';
     }

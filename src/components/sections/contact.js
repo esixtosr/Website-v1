@@ -44,6 +44,15 @@ const StyledContactSection = styled.section`
 const Contact = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const emailSubject = 'Portfolio connection';
+  const emailBody = `Hi Edwin,
+
+I came across your portfolio and wanted to connect.
+
+Best,`;
+  const emailHref = `mailto:${email}?subject=${encodeURIComponent(
+    emailSubject,
+  )}&body=${encodeURIComponent(emailBody)}`;
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -57,15 +66,16 @@ const Contact = () => {
     <StyledContactSection id="contact" ref={revealContainer}>
       <h2 className="numbered-heading overline">What’s Next?</h2>
 
-      <h2 className="title">Get In Touch</h2>
+      <h2 className="title">Let’s Connect</h2>
 
       <p>
-        Although I’m not currently looking for any new opportunities, my inbox is always open.
-        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+        I’m always open to connecting with people in cybersecurity, networking, and IT. Whether you
+        want to talk security projects, Purdue CIT, homelabs, or future opportunities, feel free to
+        reach out.
       </p>
 
-      <a className="email-link" href={`mailto:${email}`}>
-        Say Hello
+      <a className="email-link" href={emailHref}>
+        Start a Conversation
       </a>
     </StyledContactSection>
   );

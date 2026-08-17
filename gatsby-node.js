@@ -46,9 +46,18 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   createTypes(`
     type MarkdownRemarkFrontmatter {
+      date: Date @dateformat
       title: String
       category: String
       order: Int
+      tech: [String]
+      github: String
+      external: String
+      ios: String
+      android: String
+      icon: String
+      company: String
+      showInProjects: Boolean
       cover: File @fileByRelativePath
       gif: File @fileByRelativePath
       gallery: [File] @fileByRelativePath
