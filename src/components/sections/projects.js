@@ -296,6 +296,7 @@ const Projects = () => {
   const [showMore, setShowMore] = useState(false);
   const [openProject, setOpenProject] = useState(null);
   const revealTitle = useRef(null);
+  const revealIntro = useRef(null);
   const revealArchiveLink = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -306,7 +307,8 @@ const Projects = () => {
     }
 
     sr.reveal(revealTitle.current, srConfig());
-    sr.reveal(revealArchiveLink.current, srConfig());
+    sr.reveal(revealIntro.current, srConfig(100));
+    sr.reveal(revealArchiveLink.current, srConfig(200));
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
@@ -400,7 +402,7 @@ const Projects = () => {
   return (
     <StyledProjectsSection>
       <h2 ref={revealTitle}>Selected Learning Highlights</h2>
-      <p className="section-intro">
+      <p className="section-intro" ref={revealIntro}>
         A few stronger highlights are shown here. The archive keeps the full coursework and build
         timeline.
       </p>
