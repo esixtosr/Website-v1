@@ -1,6 +1,7 @@
 ---
 date: '2025-12-01'
 order: 18
+highlightOrder: 2
 title: 'WiFi Pineapple Mark VII Wireless Security Lab'
 github: ''
 external: ''

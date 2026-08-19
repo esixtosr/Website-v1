@@ -1,6 +1,7 @@
 ---
 date: '2025-12-01'
 order: 10
+highlightOrder: 11
 title: 'CNIT 32300 Basic Cyberforensics'
 github: ''
 external: ''

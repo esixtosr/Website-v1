@@ -1,6 +1,7 @@
 ---
 date: '2026-08-01'
 order: 1
+highlightOrder: 1
 title: 'Honeypot and Firewall Homelab'
 github: 'https://github.com/esixtosr/12U-Bare-Metal-Homelab'
 external: ''

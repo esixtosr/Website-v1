@@ -1,6 +1,7 @@
 ---
 date: '2025-12-01'
 order: 11
+highlightOrder: 12
 title: 'CNIT 51100 Foundations in Homeland Security Studies'
 github: ''
 external: ''

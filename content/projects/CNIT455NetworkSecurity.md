@@ -1,6 +1,7 @@
 ---
 date: '2026-12-01'
 order: 7
+highlightOrder: 7
 title: 'CNIT 45500 Network Security'
 github: ''
 external: ''

@@ -1,6 +1,7 @@
 ---
 date: '2026-05-01'
 order: 8
+highlightOrder: 8
 title: 'CNIT 34220 Network Administration'
 github: ''
 external: ''

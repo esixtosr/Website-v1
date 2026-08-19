@@ -1,6 +1,7 @@
 ---
 date: '2026-12-01'
 order: 5
+highlightOrder: 5
 title: 'CNIT 47000 Incident Response Management'
 github: ''
 external: ''

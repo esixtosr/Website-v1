@@ -1,6 +1,7 @@
 ---
 date: '2024-05-01'
 order: 12
+highlightOrder: 10
 title: 'CNIT 24200 System Administration'
 github: ''
 external: ''

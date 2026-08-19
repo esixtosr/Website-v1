@@ -272,7 +272,6 @@ const Projects = () => {
           fileAbsolutePath: { regex: "/content/projects/" }
           frontmatter: { showInProjects: { ne: false } }
         }
-        sort: { fields: [frontmatter___order, frontmatter___date], order: [ASC, DESC] }
       ) {
         edges {
           node {
@@ -282,6 +281,9 @@ const Projects = () => {
               github
               external
               icon
+              date
+              order
+              highlightOrder
             }
             excerpt(pruneLength: 155)
             html
@@ -309,7 +311,20 @@ const Projects = () => {
   }, []);
 
   const GRID_LIMIT = 6;
-  const projects = data.projects.edges.filter(({ node }) => node);
+  const projects = data.projects.edges
+    .filter(({ node }) => node)
+    .sort((a, b) => {
+      const aFrontmatter = a.node.frontmatter;
+      const bFrontmatter = b.node.frontmatter;
+      const aOrder = aFrontmatter.highlightOrder || aFrontmatter.order || 999;
+      const bOrder = bFrontmatter.highlightOrder || bFrontmatter.order || 999;
+
+      if (aOrder !== bOrder) {
+        return aOrder - bOrder;
+      }
+
+      return new Date(bFrontmatter.date) - new Date(aFrontmatter.date);
+    });
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
 

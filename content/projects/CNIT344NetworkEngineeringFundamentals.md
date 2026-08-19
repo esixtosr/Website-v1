@@ -1,6 +1,7 @@
 ---
 date: '2025-05-01'
 order: 9
+highlightOrder: 9
 title: 'CNIT 34400 Network Engineering Fundamentals'
 github: ''
 external: ''

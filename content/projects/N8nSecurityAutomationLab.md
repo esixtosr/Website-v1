@@ -1,6 +1,7 @@
 ---
 date: '2026-12-01'
 order: 17
+highlightOrder: 6
 title: 'n8n Security Automation Lab'
 github: ''
 external: ''

@@ -1,6 +1,7 @@
 ---
 date: '2025-12-01'
 order: 19
+highlightOrder: 3
 title: '3D-Printed TrueNAS Homelab'
 github: 'https://github.com/esixtosr/3D-Printed-TRUENAS'
 external: ''
