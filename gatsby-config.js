@@ -1,13 +1,11 @@
 const config = require('./src/config');
 
 module.exports = {
-  pathPrefix: `/Website-v1`,
-
   siteMetadata: {
     title: 'Edwin Sixtos Ruiz',
     description:
       'Personal portfolio website showcasing cybersecurity, network engineering, and technical projects.',
-    siteUrl: 'https://esixtosr.github.io/Website-v1', // No trailing slash allowed!
+    siteUrl: 'https://edwinsixtos.com', // No trailing slash allowed!
     image: '/og.png', // Path to your image placed in the 'static' folder
     twitterUsername: '@esixtosr',
   },
@@ -26,7 +24,7 @@ module.exports = {
       options: {
         name: 'Edwin Sixtos Ruiz',
         short_name: 'Edwin',
-        start_url: '/Website-v1/',
+        start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
         display: 'minimal-ui',

@@ -17,14 +17,14 @@
   "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build": "gatsby build",
-    "build:pages": "gatsby build --prefix-paths",
+    "build:pages": "gatsby build",
     "predevelop": "node scripts/ensure-cache.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "deploy": "gatsby build && gh-pages -d public",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
