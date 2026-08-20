@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://esixtosr.github.io/Website-v1/sitemap/sitemap-index.xml
-Host: https://esixtosr.github.io
+Sitemap: https://edwinsixtos.com/sitemap/sitemap-index.xml
+Host: https://edwinsixtos.com
