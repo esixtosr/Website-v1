@@ -148,6 +148,16 @@ const StyledTabPanel = styled.div`
 
   ul {
     ${({ theme }) => theme.mixins.fancyList};
+
+    li {
+      &:before {
+        top: 0;
+        display: flex;
+        align-items: center;
+        height: 1.65em;
+        line-height: 1;
+      }
+    }
   }
 
   h3 {

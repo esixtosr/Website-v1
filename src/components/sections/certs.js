@@ -230,7 +230,9 @@ const Certificates = () => {
             frontmatter {
               title
               issuer
+              issuedLabel
               issued
+              expiresLabel
               expires
               link
               image
@@ -308,62 +310,74 @@ const Certificates = () => {
 
       <ul className="certificates-grid">
         {certificateData.map(({ node }, i) => {
-          const { title, issuer, issued, expires, link, image, status } = node.frontmatter;
+          const { title, issuer, issuedLabel, issued, expiresLabel, expires, link, image, status } =
+            node.frontmatter;
           const badge = image ? imageMap[image.trim()] : null;
+          const imageContent = badge?.imageData ? (
+            <GatsbyImage
+              image={badge.imageData}
+              alt={`${title} badge`}
+              className="certificate-image"
+            />
+          ) : badge?.publicURL ? (
+            <img
+              src={badge.publicURL}
+              alt={`${title} badge`}
+              className="certificate-image-fallback"
+            />
+          ) : (
+            <div className="certificate-image-fallback" />
+          );
 
           return (
             <StyledCertificateCard key={i} ref={el => (revealCards.current[i] = el)}>
               <div className="certificate-card">
-                <a
-                  className="certificate-image-link"
-                  href={link}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Open credential for ${title}`}>
-                  {badge?.imageData ? (
-                    <GatsbyImage
-                      image={badge.imageData}
-                      alt={`${title} badge`}
-                      className="certificate-image"
-                    />
-                  ) : badge?.publicURL ? (
-                    <img
-                      src={badge.publicURL}
-                      alt={`${title} badge`}
-                      className="certificate-image-fallback"
-                    />
-                  ) : (
-                    <div className="certificate-image-fallback" />
-                  )}
-                </a>
-
-                <div className="certificate-content">
+                {link ? (
                   <a
-                    className="certificate-title-link"
+                    className="certificate-image-link"
                     href={link}
                     target="_blank"
-                    rel="noreferrer">
-                    {title}
+                    rel="noreferrer"
+                    aria-label={`Open credential for ${title}`}>
+                    {imageContent}
                   </a>
+                ) : (
+                  <div className="certificate-image-link">{imageContent}</div>
+                )}
+
+                <div className="certificate-content">
+                  {link ? (
+                    <a
+                      className="certificate-title-link"
+                      href={link}
+                      target="_blank"
+                      rel="noreferrer">
+                      {title}
+                    </a>
+                  ) : (
+                    <div className="certificate-title-link">{title}</div>
+                  )}
 
                   <p className="certificate-issuer">{issuer}</p>
 
                   <div className="certificate-dates">
                     <div>
-                      <div className="label">Issued</div>
+                      <div className="label">{issuedLabel || 'Issued'}</div>
                       <div className="value">{issued}</div>
                     </div>
                     <div>
-                      <div className="label">Expires</div>
+                      <div className="label">{expiresLabel || 'Expires'}</div>
                       <div className="value">{expires}</div>
                     </div>
                   </div>
 
                   {status && <div className="certificate-status">● {status}</div>}
 
-                  <a className="certificate-link" href={link} target="_blank" rel="noreferrer">
-                    View Credential
-                  </a>
+                  {link && (
+                    <a className="certificate-link" href={link} target="_blank" rel="noreferrer">
+                      View Credential
+                    </a>
+                  )}
                 </div>
               </div>
             </StyledCertificateCard>

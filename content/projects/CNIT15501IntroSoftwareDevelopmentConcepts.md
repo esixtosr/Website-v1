@@ -8,24 +8,24 @@ icon: 'Braces'
 tech:
   - Programming Fundamentals
   - Debugging
-  - Algorithms
+  - Algorithmic Thinking
   - Software Testing
 company: 'Purdue CIT Coursework'
 focus: 'Software Development Foundations'
 showInProjects: false
 ---
 
-An introductory Purdue CIT software development course where I practiced core programming concepts, debugging, algorithmic thinking, and structured problem solving.
+An introductory Purdue CIT software development course where I practiced programming fundamentals, debugging, algorithmic thinking, and structured problem solving.
 
 ### What this was
 
-CNIT 15501 introduced software development concepts that apply across programming languages. The course covered variables, data types, operators, decisions, loops, functions, arrays, user interface construction, programming standards, software testing, and debugging.
+CNIT 15501 introduced the core software development concepts that carry across programming languages. The course covered variables, data types, operators, decisions, loops, functions, arrays, basic user interface construction, programming standards, testing, and debugging.
 
 ### What I worked on
 
-- Practiced breaking problems down into smaller programming steps.
+- Practiced breaking problems into smaller programming steps.
 - Used variables, data types, decisions, loops, functions, and arrays in programming exercises.
-- Worked with debugging tools and error tracing to understand why code failed.
+- Worked through debugging and error tracing to understand why code failed.
 - Applied programming standards and testing habits to small software assignments.
 
 ### What I learned

@@ -30,6 +30,7 @@ import IconStar from './star';
 import IconTerminal from './terminal';
 import IconTwitter from './twitter';
 import IconWaypoints from './waypoints';
+import IconWrench from './wrench';
 import IconHex from './hex';
 
 const Icon = ({ name }) => {
@@ -94,6 +95,8 @@ const Icon = ({ name }) => {
       return <IconTwitter />;
     case 'Waypoints':
       return <IconWaypoints />;
+    case 'Wrench':
+      return <IconWrench />;
     default:
       return <IconExternal />;
   }

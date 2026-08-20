@@ -8,7 +8,7 @@ icon: 'Cyber'
 tech:
   - Kali Linux
   - Capture the Flag
-  - Bettercap
+  - Traffic Analysis
   - Wireshark
 company: 'Personal Lab'
 focus: 'Pentesting Practice'
@@ -19,13 +19,13 @@ A personal practice track where I started using Kali virtual machines, capture-t
 
 ### What this was
 
-This was an early self-directed security practice environment. I used Kali virtual machines and CTF-style exercises to become more comfortable with attacker methodology, tool usage, traffic inspection, and the importance of testing only inside authorized environments.
+This was an early self-directed security practice environment. I used Kali virtual machines and CTF-style exercises to become more comfortable with security tooling, attacker methodology, traffic inspection, and the importance of testing only inside authorized environments.
 
 ### What I worked on
 
 - Set up Kali virtual machines for security learning and practice.
 - Worked through capture-the-flag exercises to build problem-solving habits.
-- Practiced deeper traffic inspection with Wireshark.
+- Practiced traffic inspection and packet analysis with Wireshark.
 - Explored tools such as Bettercap conceptually within controlled learning scenarios.
 
 ### What I learned

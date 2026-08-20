@@ -8,25 +8,25 @@ icon: 'Terminal'
 tech:
   - Python
   - Java
-  - Remote Shell Concepts
+  - Remote Access Concepts
   - Defensive Awareness
 company: 'Personal Lab'
 focus: 'Controlled Remote Access Concept'
 showInProjects: false
 ---
 
-A small controlled lab where I adapted earlier Java and Python coursework into a file-based reverse terminal concept to better understand how remote access behavior works from a defender's point of view.
+A small controlled lab where I adapted earlier Java and Python coursework into a file-based remote terminal concept to better understand remote access behavior from a defender’s point of view.
 
 ### What this was
 
-This was an experimental personal build inspired by programming coursework. I used it to explore how a basic remote terminal concept behaves in a controlled environment and why that kind of capability needs to be handled carefully, ethically, and only on systems I own or have permission to test.
+This was an experimental personal lab inspired by programming coursework. I used it to study how basic remote terminal behavior can work in a controlled environment and why remote access capabilities need to be handled carefully, ethically, and only on systems I own or have permission to test.
 
 ### What I worked on
 
-- Reused programming concepts from Java and Python assignments in a security-focused experiment.
+- Reused programming concepts from Java and Python assignments in a security-focused lab.
 - Explored how command input, output handling, and file-based communication can resemble remote access behavior.
-- Practiced thinking about why remote administration tools can become dangerous when misused.
-- Treated the build as a learning artifact rather than a public tool.
+- Practiced thinking about how legitimate remote administration concepts can become risky when misused.
+- Treated the project as a private learning artifact rather than a public tool.
 
 ### What I learned
 

@@ -317,6 +317,14 @@ const ArchivePage = ({ location, data }) => {
       return aTermRank - bTermRank;
     }
 
+    const titleSort = (aFrontmatter.title || '').localeCompare(bFrontmatter.title || '', 'en', {
+      sensitivity: 'base',
+    });
+
+    if (titleSort !== 0) {
+      return titleSort;
+    }
+
     return (aFrontmatter.order || 0) - (bFrontmatter.order || 0);
   });
   const [openProject, setOpenProject] = useState(null);
@@ -351,7 +359,7 @@ const ArchivePage = ({ location, data }) => {
         <header ref={revealTitle}>
           <h1 className="big-heading">Technical Learning Archive</h1>
           <p className="subtitle">
-            A timeline of Purdue CIT coursework, labs, and independent technical builds.
+            A timeline of Purdue CIT coursework, labs, and independent technical projects.
           </p>
         </header>
 

@@ -18,6 +18,6 @@ tech:
   - SIEM
 ---
 
-An enterprise-style SIEM lab built to monitor role-based VPN access, Active Directory groups, Windows endpoints, and security telemetry through Wazuh.
+An enterprise-style SIEM lab built to monitor VPN access, Active Directory groups, Windows endpoints, and security events through Wazuh.
 
-The lab maps user roles to access paths, collects endpoint agent data, and validates detections such as failed logons and endpoint posture from a centralized dashboard aligned with MITRE ATT&CK-style analysis.
+The lab maps user roles to network access, collects endpoint telemetry, and validates detections such as failed logons, authentication activity, and endpoint posture from a centralized dashboard.

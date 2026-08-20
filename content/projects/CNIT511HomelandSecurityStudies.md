@@ -3,6 +3,7 @@ date: '2025-12-01'
 order: 11
 highlightOrder: 12
 title: 'CNIT 51100 Foundations in Homeland Security Studies'
+description: 'A homeland security course where I studied risk assessment, physical security, emergency management, crisis response, and infrastructure protection.'
 github: ''
 external: ''
 icon: 'ShieldLock'
@@ -16,16 +17,16 @@ focus: 'Risk & Infrastructure Protection'
 showInProjects: true
 ---
 
-A Purdue CIT homeland security course where I studied risk assessment, emergency management, physical security, crisis response, and protection of public and private infrastructure.
+A Purdue CIT homeland security course where I studied risk assessment, physical security, emergency management, crisis response, and protection of public and private infrastructure.
 
 ### What this was
 
-CNIT 51100 explored homeland security from an interdisciplinary perspective, including prevention, mitigation, preparation, response, and recovery. The course connected security planning with real-world infrastructure, emergency management, business continuity, and crisis communication.
+CNIT 51100 explored homeland security from an interdisciplinary perspective, including prevention, mitigation, preparation, response, and recovery. The course connected security planning to real-world infrastructure, emergency management, business continuity, crisis communication, and collaborative response.
 
 ### What I worked on
 
 - Studied how organizations identify assets, evaluate risk, and decide which controls are worth implementing.
-- Practiced thinking through physical security from both an attacker and defender perspective.
+- Practiced thinking through physical security from both attacker and defender perspectives.
 - Participated in an authorized venue security assessment connected to a Purdue football game environment.
 - Connected field observations to emergency management, access control, communication, and business continuity concepts.
 

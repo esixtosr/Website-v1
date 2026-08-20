@@ -277,6 +277,7 @@ const Projects = () => {
           node {
             frontmatter {
               title
+              description
               tech
               github
               external
@@ -332,7 +333,7 @@ const Projects = () => {
 
   const projectInner = node => {
     const { frontmatter, excerpt } = node;
-    const { github, external, title, tech, icon } = frontmatter;
+    const { github, external, title, description, tech, icon } = frontmatter;
 
     return (
       <div className="project-inner">
@@ -368,7 +369,7 @@ const Projects = () => {
 
           <h3 className="project-title">{title}</h3>
 
-          <p className="project-description">{excerpt}</p>
+          <p className="project-description">{description || excerpt}</p>
         </header>
 
         <footer>
@@ -401,14 +402,14 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 ref={revealTitle}>Selected Learning Highlights</h2>
+      <h2 ref={revealTitle}>Academic &amp; Technical Highlights</h2>
       <p className="section-intro" ref={revealIntro}>
-        A few stronger highlights are shown here. The archive keeps the full coursework and build
-        timeline.
+        A few selected coursework, lab, and independent build highlights are shown here. The full
+        archive tracks my broader academic and technical learning journey.
       </p>
 
       <Link className="archive-link" to="/archive" ref={revealArchiveLink}>
-        View Full Learning Archive
+        View Learning Archive
       </Link>
 
       <ul className="projects-grid">

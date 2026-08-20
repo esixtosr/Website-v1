@@ -1,8 +1,10 @@
 ---
 title: 'CompTIA Security+'
 issuer: 'CompTIA'
-issued: 'Planned'
-expires: '—'
+issuedLabel: 'Status'
+issued: 'In Progress'
+expiresLabel: 'Target'
+expires: '2026'
 link: 'https://www.comptia.org/certifications/security'
 image: 'security+badge.jpg'
 status: 'In Progress'

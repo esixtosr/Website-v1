@@ -66,9 +66,9 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a Cybersecurity and Network Engineering student focused on secure infrastructure,
-        systems administration, and network defense. I enjoy building practical, resilient
-        environments and solving technical problems hands-on.
+        I’m a Cybersecurity and Network Engineering student interested in network security, systems
+        administration, and infrastructure. I build hands-on projects to understand how real systems
+        work, how they break, and how to defend them.
       </p>
     </>
   );

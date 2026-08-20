@@ -8,18 +8,18 @@ range: 'Summers 2024 - 2026'
 url: 'https://polytechnic.purdue.edu/'
 skills:
   - name: Network Infrastructure
-    level: 88
+    level: 90
   - name: Cat6/Cat6A Cabling
-    level: 86
+    level: 90
   - name: Switching & Routing
-    level: 82
+    level: 80
   - name: Wireless Access Points
     level: 80
   - name: Lab Systems Support
-    level: 84
+    level: 80
 ---
 
 - Installed and maintained classroom and lab network infrastructure.
 - Terminated Cat6/Cat6A cabling and supported switches, routers, and wireless access points.
 - Configured network equipment, servers, workstations, and instructional lab systems.
-- Helped support instructional, research, and administrative technology environments.
+- Supported instructional, research, and administrative technology environments.

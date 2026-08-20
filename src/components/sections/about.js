@@ -156,10 +156,10 @@ const About = () => {
 
   const skills = [
     'Network Security',
-    'VLANs & VPNs',
     'System Administration',
-    'Linux & Windows',
     'Virtualization',
+    'VLANs & VPNs',
+    'Linux & Windows',
     'Risk & Compliance',
   ];
 
@@ -172,36 +172,36 @@ const About = () => {
           <div>
             <p>
               Hello! I’m Edwin. I’m a Cybersecurity and Network Engineering student at Purdue
-              University with a strong interest in secure infrastructure, systems administration,
-              network defense, and practical hands-on problem solving.
+              University with an interest in network security, systems administration,
+              infrastructure, and governance.
             </p>
 
             <p>
-              Over the past few years, I’ve had the opportunity to contribute in different
-              environments, including{' '}
-              <a href="https://sinapsis.tech/" target="_blank" rel="noreferrer">
+              Most of my experience comes from hands-on work across school, technical support,
+              teaching, and project-based cybersecurity work. I’ve worked with{' '}
+              <a href="https://sinapsis.tech" target="_blank" rel="noreferrer">
                 a startup
               </a>
               ,{' '}
-              <a href="https://www.purdue.edu/" target="_blank" rel="noreferrer">
+              <a href="https://www.purdue.edu" target="_blank" rel="noreferrer">
                 a university
               </a>
               , and in{' '}
               <a
-                href="https://polytechnic.purdue.edu/degrees/computer-and-information-technology"
+                href="https://polytechnic.purdue.edu/academics/computer-and-information-technology"
                 target="_blank"
                 rel="noreferrer">
                 teaching and academic support
               </a>
-              . My experience has included supporting security and ISO 27001-aligned documentation
-              at Sinapsis.tech, working in technical support and networking-focused environments at
-              Purdue, and serving as a teaching assistant for Purdue CIT courses.
+              environments while building experience with security documentation, networking,
+              systems, and technical problem solving.
             </p>
 
             <p>
-              My main focus today is building a strong foundation across cybersecurity, networking,
-              infrastructure, and governance — combining technical work with clear documentation,
-              structured thinking, and real-world operational support.
+              Right now, I’m focused on building a strong technical foundation across cybersecurity,
+              networking, and systems administration while improving how I document, explain, and
+              organize my work. My goal is to turn what I learn into practical projects that show
+              real progress.
             </p>
 
             <p>Here are a few areas I’ve been working in recently:</p>

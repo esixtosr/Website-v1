@@ -69,9 +69,9 @@ Best,`;
       <h2 className="title">Let’s Connect</h2>
 
       <p>
-        I’m always open to connecting with people in cybersecurity, networking, and IT. Whether you
-        want to talk security projects, Purdue CIT, homelabs, or future opportunities, feel free to
-        reach out.
+        I’m always happy to connect with people in cybersecurity, networking, and IT. Whether you
+        want to talk about security projects, Purdue CIT, homelabs, or potential opportunities, feel
+        free to reach out.
       </p>
 
       <a className="email-link" href={emailHref}>

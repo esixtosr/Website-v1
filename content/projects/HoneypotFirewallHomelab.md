@@ -3,6 +3,7 @@ date: '2026-08-01'
 order: 1
 highlightOrder: 1
 title: 'Honeypot and Firewall Homelab'
+description: 'A defensive homelab branch where I test honeypots, firewall rules, VLAN segmentation, VPN access, logging, and directory-aware administration.'
 github: 'https://github.com/esixtosr/12U-Bare-Metal-Homelab'
 external: ''
 icon: 'ShieldLock'
@@ -17,11 +18,11 @@ focus: 'Defensive Infrastructure'
 showInProjects: true
 ---
 
-A deeper security-focused branch of my homelab where I test honeypots, firewall rules, VLAN segmentation, VPN access, and directory-aware infrastructure design.
+A security-focused branch of my homelab where I test honeypots, firewall rules, VLAN segmentation, VPN access, logging, and directory-aware infrastructure design.
 
 ### What this was
 
-This project extends my larger bare-metal homelab into a controlled security testing environment. The goal is to understand how vulnerable services behave, how network controls limit exposure, and how segmentation can protect infrastructure while still allowing remote access for trusted users.
+This project extends my larger bare-metal homelab into a controlled defensive security environment. The goal is to understand how exposed services behave, how network controls limit access, and how segmentation can protect infrastructure while still allowing remote access for trusted users.
 
 ### What I worked on
 
@@ -32,4 +33,4 @@ This project extends my larger bare-metal homelab into a controlled security tes
 
 ### What I learned
 
-This lab helped me move from building infrastructure to defending it. It strengthened my understanding of how firewall policy, segmentation, identity, logging, and controlled vulnerable systems can work together to support blue-team learning and incident response practice.
+This lab helped me move from building infrastructure to defending it. It strengthened my understanding of how firewall policy, segmentation, identity, logging, and controlled test systems can work together to support blue-team learning and incident response practice.

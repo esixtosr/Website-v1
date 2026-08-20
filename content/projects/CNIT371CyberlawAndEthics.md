@@ -23,11 +23,11 @@ CNIT 37100 focused on cyberlaw as the legal framework around cyber activities an
 
 ### What I worked on
 
-- Studied the role of government in creating and enforcing cyber policy and law.
+- Studied how cyber policy and law shape professional security work.
 - Reviewed legal foundations around privacy, speech, jurisdiction, surveillance, and intellectual property.
-- Evaluated how law and policy affect cybersecurity practice.
-- Discussed ethical issues that appear in professional security work.
+- Evaluated how legal and ethical boundaries affect cybersecurity decisions.
+- Discussed professional responsibility in security, governance, and cyber operations.
 
 ### What I learned
 
-This course helped me understand that cybersecurity decisions do not happen in a vacuum. Technical work has legal, ethical, and policy boundaries, and professionals need to understand those boundaries before acting.
+This course helped me understand that cybersecurity decisions do not happen in a vacuum. Technical work has legal, ethical, and policy boundaries, and security professionals need to understand those boundaries before acting.

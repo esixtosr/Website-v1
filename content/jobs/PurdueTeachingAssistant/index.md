@@ -8,13 +8,13 @@ range: 'January 2024 - Present'
 url: 'https://polytechnic.purdue.edu/'
 skills:
   - name: Linux
-    level: 88
+    level: 90
   - name: Windows Server
-    level: 86
+    level: 90
   - name: Active Directory
-    level: 84
+    level: 80
   - name: Virtualization
-    level: 82
+    level: 80
   - name: Technical Mentoring
     level: 90
 ---
@@ -22,4 +22,4 @@ skills:
 - Mentored students in Linux, Windows Server, Active Directory, virtualization, and system administration labs.
 - Supported Nutanix HCI and virtualized lab environments for hands-on coursework.
 - Reinforced troubleshooting, documentation, and security fundamentals.
-- Assisted with lab preparation, technical questions, and student support during coursework.
+- Assisted with lab preparation, technical questions, and student support.

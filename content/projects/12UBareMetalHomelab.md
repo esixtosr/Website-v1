@@ -15,11 +15,11 @@ focus: 'Infrastructure Homelab'
 showInProjects: false
 ---
 
-A compact 12U bare-metal homelab built for network segmentation, infrastructure services, virtualization, and hands-on systems administration.
+A compact 12U bare-metal homelab built to support network segmentation, infrastructure services, virtualization, and hands-on systems administration.
 
 ### What this was
 
-This build combines physical server hardware, UniFi networking, managed switching, VLAN planning, and documentation-focused topology work. It supports cybersecurity, networking, systems administration, and self-hosted service practice.
+This build combines physical server hardware, UniFi networking, managed switching, VLAN planning, and documentation-focused topology work into one reusable lab environment. It supports cybersecurity, networking, systems administration, and self-hosted service practice.
 
 ### What I worked on
 

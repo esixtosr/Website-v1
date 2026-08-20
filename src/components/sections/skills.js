@@ -121,9 +121,14 @@ const StyledSkillCard = styled.li`
     &:before {
       content: '▹';
       position: absolute;
+      top: 0;
       left: 0;
+      display: flex;
+      align-items: center;
+      height: 1.65em;
       color: var(--green);
       font-family: var(--font-mono);
+      line-height: 1;
     }
   }
 `;
@@ -154,6 +159,7 @@ const Skills = () => {
     'Governance, Risk & Compliance': 3,
     'Scripting & Automation': 4,
     'Scripting & Technical Workflow': 4,
+    'Troubleshooting & Operations': 4,
   };
 
   const skillsData = [...data.skills.edges].sort((a, b) => {
@@ -183,6 +189,8 @@ const Skills = () => {
         return 'Folder';
       case 'Scripting & Automation':
         return 'Terminal';
+      case 'Troubleshooting & Operations':
+        return 'Wrench';
       default:
         return 'Hex';
     }

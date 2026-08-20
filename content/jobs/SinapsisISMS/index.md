@@ -10,16 +10,16 @@ skills:
   - name: ISO 27001
     level: 90
   - name: GRC
-    level: 88
+    level: 90
   - name: Risk Assessment
-    level: 84
+    level: 80
   - name: Control Mapping
-    level: 82
+    level: 80
   - name: Security Awareness
     level: 80
 ---
 
-- Led initial ISO/IEC 27001:2022 ISMS buildout.
+- Helped lead the initial ISO/IEC 27001:2022 ISMS buildout.
 - Created governance documentation, policy templates, and risk assessment structure.
-- Built foundational GRC artifacts including risk register support, control mapping, and audit evidence organization.
-- Supported security awareness material development and ISMS documentation cleanup.
+- Built foundational GRC artifacts, including risk register support, control mapping, and audit evidence organization.
+- Developed security awareness materials and improved ISMS documentation organization.
