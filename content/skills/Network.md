@@ -3,6 +3,6 @@ title: 'Systems & Infrastructure'
 ---
 
 - Proxmox virtualization, homelab administration, and service deployment
-- Linux and Windows environments for technical project work
-- Backup concepts, storage organization, and operational support
-- Building and maintaining systems for testing and learning
+- Linux and Windows Server environments for hands-on project work
+- Storage organization, backup planning, and system recovery concepts
+- Building and maintaining lab systems for testing, learning, and documentation

@@ -117,6 +117,8 @@ const StyledText = styled.div`
   }
 
   .meta {
+    display: grid;
+    gap: 4px;
     margin-bottom: 24px;
     color: var(--light-slate);
     font-family: var(--font-mono);
@@ -191,11 +193,11 @@ const Education = () => {
   }, [prefersReducedMotion]);
 
   const highlights = [
-    'Expected December 2026',
-    'West Lafayette, Indiana',
     'Cybersecurity',
     'Network Engineering',
     'Systems Administration',
+    'Secure Infrastructure',
+    'Hands-on Experience',
     'Technical Documentation',
   ];
 
@@ -213,17 +215,19 @@ const Education = () => {
         <StyledText>
           <p className="school">Purdue University Polytechnic Institute</p>
           <h3 className="degree">B.S. in Cybersecurity &amp; Network Engineering</h3>
-          <p className="meta">Expected Graduation: December 2026</p>
+          <div className="meta">
+            <span>Expected Graduation: December 2026</span>
+            <span>West Lafayette, Indiana</span>
+          </div>
 
           <p>
-            I am pursuing a degree focused on cybersecurity, network engineering, systems
-            administration, and practical technical problem-solving.
+            I’m studying cybersecurity, network engineering, systems administration, and secure
+            infrastructure through a mix of coursework, labs, and hands-on projects.
           </p>
 
           <p>
-            My coursework and project work emphasize secure infrastructure, troubleshooting,
-            technical documentation, and hands-on lab experience across networking and security
-            environments.
+            My academic work has focused on networking, security fundamentals, troubleshooting,
+            technical documentation, and building practical experience in lab-based environments.
           </p>
 
           <ul className="education-list">

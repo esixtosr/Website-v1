@@ -19,15 +19,15 @@ A Purdue CIT systems course where I studied UNIX administration, installation, n
 
 ### What this was
 
-CNIT 34000 focused on the tasks and issues involved in administering UNIX systems. The course covered installation, networking, software management, scripting, user management, UNIX services, and integration with Windows environments.
+CNIT 34000 focused on the practical work involved in administering UNIX-based systems. The course covered installation, networking, software management, scripting, user management, UNIX services, and integration with Windows environments.
 
 ### What I worked on
 
 - Studied the theory and practice of administering UNIX-based operating systems.
 - Practiced installation, maintenance, and basic UNIX service administration.
 - Worked with user management, software management, and shell scripting concepts.
-- Connected UNIX administration to system hardening and cross-platform environments.
+- Connected UNIX administration to system hardening and cross-platform infrastructure.
 
 ### What I learned
 
-This course strengthened the systems side of my security foundation. It helped me become more comfortable with UNIX environments, shell scripting, and the administration work behind secure and reliable infrastructure.
+This course strengthened the systems side of my security foundation. It helped me become more comfortable with UNIX environments, shell scripting, service administration, and the work behind secure, reliable infrastructure.

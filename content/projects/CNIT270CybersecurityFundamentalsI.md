@@ -9,17 +9,17 @@ tech:
   - Wireshark
   - John the Ripper
   - Scripting
-  - Penetration Testing
+  - Introductory Penetration Testing
 company: 'Purdue CIT Coursework'
 focus: 'Cybersecurity Foundations'
 showInProjects: false
 ---
 
-A Purdue CIT cybersecurity foundations course where I started connecting security models, risks, vulnerabilities, technical controls, and incident management to hands-on security tools.
+A Purdue CIT cybersecurity foundations course where I started connecting security models, risk, vulnerabilities, technical controls, and incident management to hands-on security tools.
 
 ### What this was
 
-CNIT 27000 introduced core cybersecurity concepts, including security models, risks, vulnerabilities, technical controls, policy, and the incident management framework. The course helped build a foundation for deeper security coursework and lab practice.
+CNIT 27000 introduced core cybersecurity concepts, including security models, risk, vulnerabilities, technical controls, policy, and incident management. The course helped build a foundation for later security coursework, lab practice, and defensive thinking.
 
 ### What I worked on
 
@@ -30,4 +30,4 @@ CNIT 27000 introduced core cybersecurity concepts, including security models, ri
 
 ### What I learned
 
-This class was one of the first courses where cybersecurity felt more hands-on. It helped connect models and policy to actual tools, traffic analysis, password security, and the incident response mindset.
+This class was one of the first courses where cybersecurity felt more hands-on. It helped me connect security models and policy to actual tools, traffic analysis, password security, and the incident response mindset.

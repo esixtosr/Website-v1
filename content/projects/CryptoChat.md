@@ -15,7 +15,7 @@ focus: 'Encrypted Messaging'
 showInProjects: false
 ---
 
-An encrypted peer-to-peer messaging build that grew out of my cryptography coursework and helped me connect key exchange, authenticated encryption, trust, and packet-level validation.
+An encrypted peer-to-peer messaging project that grew out of my cryptography coursework and helped me connect key exchange, authenticated encryption, trust verification, and packet-level validation.
 
 ### What this was
 
@@ -24,10 +24,10 @@ CryptoChat is an educational secure messaging project focused on practical commu
 ### What I worked on
 
 - Built a Python-based encrypted chat workflow around peer-to-peer messaging concepts.
-- Connected cryptography coursework to practical ideas like key exchange, authenticated encryption, and trust verification.
+- Connected cryptography coursework to practical concepts like key exchange, authenticated encryption, and trust verification.
 - Used packet inspection to validate that message contents were not visible in transit.
-- Documented the project as a portfolio artifact while keeping the scope educational.
+- Documented the project as a portfolio artifact while keeping the scope educational and controlled.
 
 ### What I learned
 
-This project helped make cryptography feel concrete. It showed me that secure communication depends on protocol decisions, identity verification, key handling, replay awareness, and clear documentation, not just choosing an encryption algorithm.
+This project helped make cryptography feel concrete. It showed me that secure communication depends on protocol decisions, identity verification, key handling, replay awareness, validation, and clear documentation — not just choosing an encryption algorithm.

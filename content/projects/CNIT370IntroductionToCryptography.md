@@ -15,7 +15,7 @@ focus: 'Cryptography'
 showInProjects: false
 ---
 
-A Purdue CIT cryptography course where I studied encryption, hashing, trust, key management, and how cryptographic choices protect information in real systems.
+A Purdue CIT cryptography course where I studied encryption, hashing, trust, key management, and how cryptographic choices protect information in secure systems.
 
 ### What this was
 
@@ -25,8 +25,8 @@ CNIT 37000 introduced the inner workings of cryptographic primitives and how to 
 
 - Studied symmetric and asymmetric encryption concepts.
 - Reviewed integrity protection, hashing, and related security properties.
-- Explored how trust can be built in environments where parties do not already trust each other.
-- Applied cryptographic thinking to plausible real-world security problems.
+- Explored how trust can be built between parties that do not already trust each other.
+- Applied cryptographic thinking to realistic secure communication problems.
 
 ### What I learned
 

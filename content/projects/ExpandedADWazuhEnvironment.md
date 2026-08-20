@@ -9,23 +9,23 @@ tech:
   - Active Directory
   - Wazuh
   - Windows Server
-  - Virtual Machines
+  - Endpoint Monitoring
 company: 'Personal Lab'
 focus: 'Identity & SIEM Monitoring'
 showInProjects: false
 ---
 
-A more capable Active Directory lab that expanded my earlier domain environment with stronger hardware, more virtual machines, and Wazuh monitoring.
+A more capable Active Directory lab that expanded my earlier domain environment with stronger hardware, additional virtual machines, and Wazuh-based monitoring.
 
 ### What this was
 
-This build grew out of my first self-directed Active Directory environment. The earlier version helped me understand domains and users at a small scale; this version pushed the idea further with more compute power, additional virtual machines, and a closer connection to SIEM monitoring.
+This build grew out of my first self-directed Active Directory environment. The earlier version helped me understand domains and users at a small scale; this version pushed the idea further by adding more compute, more endpoints, and a stronger connection to SIEM visibility.
 
 ### What I worked on
 
 - Expanded the original Active Directory concept into a larger Windows domain environment.
-- Added more virtual machines and resources to support more realistic lab activity.
-- Connected identity and endpoint activity into Wazuh for monitoring and visibility.
+- Added virtual machines and lab resources to support more realistic administration and monitoring activity.
+- Connected identity and endpoint activity into Wazuh for centralized visibility.
 - Practiced thinking about how domain structure, users, endpoints, and logs fit together in a security lab.
 
 ### What I learned

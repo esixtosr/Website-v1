@@ -18,6 +18,6 @@ tech:
   - Wireshark
 ---
 
-CryptoChat is an encrypted peer-to-peer messaging project focused on practical secure communication concepts, including key exchange, authenticated encryption, and trust-on-first-use fingerprint verification.
+CryptoChat is an encrypted peer-to-peer messaging project built to explore practical secure communication concepts, including key exchange, authenticated encryption, and fingerprint verification.
 
-The project demonstrates how two peers can establish a shared secret, derive encryption keys, verify identities through fingerprints, and exchange encrypted messages over TCP while validating the result with packet-level inspection.
+The project shows how two peers establish a shared secret, derive encryption keys, verify identities, and exchange encrypted messages over TCP, with packet-level validation in Wireshark.

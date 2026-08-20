@@ -15,19 +15,19 @@ focus: 'Homeland Security Resources'
 showInProjects: false
 ---
 
-A Purdue CIT homeland security course where I studied how public and private organizations manage resources, technologies, preparedness, and continuity during emergencies.
+A Purdue CIT homeland security course where I studied how public and private organizations manage resources, technologies, preparedness, continuity, and resilience during emergencies.
 
 ### What this was
 
-CNIT 51200 was an interdisciplinary course focused on applying and managing resources used in homeland security programs. Topics included terrorism, corporate security, biosecurity, health care preparedness, community preparedness, risk transfer, information security, privacy, and public/private preparedness programs.
+CNIT 51200 focused on how homeland security programs apply and manage resources across public and private sector environments. The course connected preparedness, continuity, technology, privacy, information security, and organizational resilience to real emergency planning scenarios.
 
 ### What I worked on
 
-- Studied how business continuity and redundancy apply to disasters and emergencies.
-- Reviewed examples of homeland security practice across public and private sectors.
-- Explored how resources and technologies support preparedness and response.
+- Studied how business continuity and redundancy apply during disasters and emergencies.
+- Reviewed homeland security resource planning across public and private sector examples.
+- Explored how technologies, people, and procedures support preparedness and response.
 - Connected homeland security principles to information security, privacy, and organizational resilience.
 
 ### What I learned
 
-This course helped connect cybersecurity to larger preparedness and resilience work. It reinforced that protecting systems also means planning for continuity, coordinating resources, and understanding how technical decisions affect people and organizations during emergencies.
+This course helped me connect cybersecurity to larger preparedness and resilience work. It reinforced that protecting systems also means planning for continuity, coordinating resources, and understanding how technical decisions affect people and organizations during emergencies.

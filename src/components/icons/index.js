@@ -29,3 +29,4 @@ export { default as IconStar } from './star';
 export { default as IconTerminal } from './terminal';
 export { default as IconTwitter } from './twitter';
 export { default as IconWaypoints } from './waypoints';
+export { default as IconWrench } from './wrench';

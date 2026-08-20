@@ -10,16 +10,16 @@ skills:
   - name: ISMS Documentation
     level: 90
   - name: Risk Management
-    level: 88
+    level: 90
   - name: Security Governance
-    level: 84
+    level: 80
   - name: Infrastructure Planning
     level: 80
   - name: Technical Writing
-    level: 88
+    level: 90
 ---
 
 - Support security governance, risk, and compliance activities.
 - Maintain ISO 27001-aligned policies, evidence tracking, and control documentation.
 - Assist with infrastructure security planning across access control, backup strategy, and network segmentation.
-- Coordinate technical and administrative security tasks across startup operations.
+- Coordinate security documentation, technical planning, and administrative tasks across startup operations.

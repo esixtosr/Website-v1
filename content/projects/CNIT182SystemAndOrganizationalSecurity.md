@@ -15,19 +15,19 @@ focus: 'Organizational Security'
 showInProjects: false
 ---
 
-An introductory Purdue CIT security course where I studied how cybersecurity supports system design, organizational risk management, governance, business continuity, and incident planning.
+An introductory Purdue CIT security course where I studied how cybersecurity connects to system design, organizational risk, governance, business continuity, and incident planning.
 
 ### What this was
 
-CNIT 18200 focused on the security decisions that happen across the system life cycle, including requirements definition, design, procurement, testing, analysis, and maintenance. The course also connected technical security work to organizational priorities, governance, compliance, and risk.
+CNIT 18200 introduced the organizational side of cybersecurity. The course focused on how security decisions affect systems throughout their life cycle, from planning and design to testing, maintenance, and risk management.
 
 ### What I worked on
 
 - Studied how cybersecurity fits into system design, procurement, testing, and maintenance.
 - Explored how governance, compliance, and policy decisions affect organizational security.
-- Reviewed business continuity, disaster recovery, and incident management as parts of cybersecurity planning.
-- Practiced thinking through risk models and how analytical tools support risk assessment.
+- Reviewed business continuity, disaster recovery, and incident management as parts of security planning.
+- Practiced thinking through risk models and how analysis supports better security decisions.
 
 ### What I learned
 
-This course helped frame cybersecurity as more than technical defense. It introduced the organizational side of security: managing risk, supporting business continuity, planning for incidents, and making security decisions that protect the mission of an organization.
+This course helped me see cybersecurity as more than technical defense. It introduced the governance and risk side of security, including how organizations plan for incidents, support continuity, and make decisions that protect their mission.

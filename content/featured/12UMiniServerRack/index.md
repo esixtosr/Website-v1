@@ -16,6 +16,6 @@ tech:
   - Bare Metal
 ---
 
-A compact 12U bare-metal homelab built for network segmentation, infrastructure services, virtualization, and hands-on systems administration.
+A compact 12U bare-metal homelab built to support network segmentation, virtualization, infrastructure services, and hands-on system administration.
 
-The rack combines physical server hardware, UniFi networking, managed switching, VLAN planning, and documentation-focused topology work to support cybersecurity, networking, and self-hosted service projects.
+The rack combines physical server hardware, UniFi networking, managed switching, VLAN planning, and documentation-focused topology work for cybersecurity, networking, and self-hosted service projects.

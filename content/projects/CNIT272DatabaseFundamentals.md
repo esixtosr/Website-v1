@@ -7,7 +7,7 @@ external: ''
 icon: 'HardDrive'
 tech:
   - SQL
-  - ERD
+  - Entity Relationship Diagrams
   - Data Modeling
   - Normalization
 company: 'Purdue CIT Coursework'
@@ -15,11 +15,11 @@ focus: 'Database Design'
 showInProjects: false
 ---
 
-A Purdue CIT database course where I studied relational database design, modeling, normalization, SQL, and practical database development.
+A Purdue CIT database course where I studied relational database design, data modeling, normalization, SQL, and practical database development.
 
 ### What this was
 
-CNIT 27200 focused on relational database concepts. The course covered data design, entity relationship diagrams, modeling, normalization, SQL for defining and manipulating data, and practical issues database developers need to handle.
+CNIT 27200 introduced the fundamentals of relational database design. The course focused on how data is modeled, organized, normalized, queried, and maintained so applications can store and retrieve information reliably.
 
 ### What I worked on
 
@@ -30,4 +30,4 @@ CNIT 27200 focused on relational database concepts. The course covered data desi
 
 ### What I learned
 
-This course helped me understand how data structure affects applications, reporting, and security. It also gave me a stronger foundation for thinking about data integrity, query design, and how systems depend on well-modeled information.
+This course helped me understand how database structure affects applications, reporting, reliability, and security. It gave me a stronger foundation for thinking about data integrity, query design, and how systems depend on well-organized information.

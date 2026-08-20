@@ -21,6 +21,6 @@ tech:
   - Network Visualization
 ---
 
-An interactive network topology visualization tool inspired by Cisco Packet Tracer. NetFlow was designed to map infrastructure layouts, visualize VLAN segmentation, and document real-world network architectures.
+NetFlow is an interactive network topology tool I built to design and document network layouts, VLAN segmentation, and infrastructure relationships.
 
-The project allows users to create devices, define connections, organize VLAN environments, and export network diagrams for documentation and analysis.
+It lets users create devices, define connections, organize VLAN environments, and export diagrams for documentation, planning, and analysis.
