@@ -32,22 +32,21 @@ const StyledTabList = styled.div`
   list-style: none;
 
   @media (max-width: 600px) {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    overflow: visible;
     width: 100%;
-    padding: 0 0 8px;
+    padding: 0;
     margin-bottom: 30px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 
   @media (max-width: 480px) {
-    gap: 10px;
+    gap: 8px;
+  }
+
+  @media (max-width: 360px) {
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -72,18 +71,21 @@ const StyledTabButton = styled.button`
 
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
-    flex: 0 0 auto;
-    width: auto;
-    min-width: max-content;
-    padding: 0 16px;
+    width: 100%;
+    min-width: 0;
+    min-height: var(--tab-height);
+    height: auto;
+    padding: 10px 12px;
     border-left: 0;
     border-bottom: 2px solid
       ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--lightest-navy)')};
     text-align: center;
+    white-space: normal;
+    line-height: 1.2;
   }
 
   @media (max-width: 480px) {
-    padding: 0 14px;
+    padding: 9px 10px;
     font-size: var(--fz-xxs);
   }
 
